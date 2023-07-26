@@ -1,7 +1,50 @@
 @use './variables' as *;
 @use './breakpoints' as *;
 
+/*
+    Usage
+==================
+
+   @include mq(medium) {
+        @include grid;
+        @include grid-col(1, 12);
+    }
+*/
+
 @mixin grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 1rem;
+
+    @include mq(medium) {
+        grid-template-columns: repeat(8, 1fr);
+        column-gap: 1.125rem;
+    }
+
+    @include mq(large) {
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 1.25rem;
+    }
+}
+
+@mixin grid-col($colStart, $colSpan) {
+    grid-column: $colStart / span $colSpan;
+}
+
+
+/*
+    Usage
+==================
+
+    .header {
+        @include flex(center, center);
+    }
+*/
+@mixin flex($alignItem, $justifyContent, $direction: false) {
+    align-items: $alignItem;
+    justify-content: $justifyContent;
+
+    @if $direction {
+        flex-direction: $direction;
+    }
 }

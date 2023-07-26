@@ -7,6 +7,40 @@
     }
 }
 
-// h1, .h1 {
+    /*
+        they haven't firmly decided on font size yet 
+        use these for now and lets update later on 
+        and also they dont consider stuff related to tablet so we should adjust it while developing
+    */
 
-// }
+h1, .h1 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 130%;
+    text-transform: uppercase;
+
+        // tablet
+    //@include mq()
+
+    @include mq(large) {
+        font-size: 3rem;
+        line-height: normal;
+    }
+}
+
+h2, .h2 {
+    font-size: 1.125rem;
+
+    @include mq(large) {
+        font-size: 2.5rem;
+    }
+}
+
+h3, .h3 {
+    font-size: 1rem;
+
+    @include mq(large) {
+        font-size: 1.75rem;
+    }
+}
