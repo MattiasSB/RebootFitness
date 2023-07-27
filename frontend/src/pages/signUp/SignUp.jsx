@@ -8,11 +8,13 @@ import ButtonAuth from '../../components/button-auth'
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
+    fname: '',
+    lname: '',
     email: '',
     password: ''
   })
 
-  const { email, password } = formData
+  const { fname, lname, email, password } = formData
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -35,6 +37,20 @@ export default function SignUp() {
             onSubmit={onSubmit}
             className={styles.form}
           >
+            <input 
+              type="fname"
+              placeholder="first name*"  
+              id="fname"
+              value={fname}
+              onChange={onChange}
+            />
+            <input 
+              type="lname"
+              placeholder="last name*"  
+              id="lname"
+              value={lname}
+              onChange={onChange}
+            />
             <input 
               type="email"
               placeholder="email or phone number*"  
