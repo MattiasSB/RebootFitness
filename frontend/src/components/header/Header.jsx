@@ -10,6 +10,7 @@ import { useState } from 'react';
 
 
 export default function Header() {
+
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   // Function to toggle the menu state
@@ -27,8 +28,11 @@ export default function Header() {
           >
             Reboot
           </Link>
-          <MenuToggle isOpen={isMenuOpen} toggleMenu={handleMenuToggle} />
-          <NavbarLinks isOpen={isMenuOpen} />
+          <MenuToggle 
+            isOpen={isMenuOpen} 
+            toggleMenu={handleMenuToggle} 
+          />
+          <NavbarLinks toggleMenu={handleMenuToggle} isOpen={isMenuOpen} />
         </div>
       </nav>
     </header>

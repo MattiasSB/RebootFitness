@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { HambergerMenu, CloseCircle } from 'iconsax-react';
 import styles from '../../header/Header.module.scss';
