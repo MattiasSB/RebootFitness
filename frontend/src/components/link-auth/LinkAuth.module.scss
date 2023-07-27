@@ -1,0 +1,15 @@
+@use '../../styles/abstracts' as *;
+
+.link {
+    @include flex(center, flex-start);
+    color: #535353;
+    font-family: $font-lato;
+    font-size: 0.8125rem;
+    margin: 0 auto;
+    margin-top: 1.38rem;
+
+    a {
+        color: $color-secondary-purple;
+        margin-left: 0.3rem;
+    }
+}
