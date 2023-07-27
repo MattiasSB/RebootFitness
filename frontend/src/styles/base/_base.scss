@@ -6,6 +6,7 @@ body {
 
 .wrapper {
     padding: 0 1.875rem;
+    max-width: 90rem;
     margin: 0 auto;
 
     @include mq(medium) {
@@ -15,4 +16,9 @@ body {
     @include mq(large) {
         padding: 0 4.375rem; 
     }
+}
+
+button {
+    transition: all 300ms ease;
+    cursor: pointer;
 }

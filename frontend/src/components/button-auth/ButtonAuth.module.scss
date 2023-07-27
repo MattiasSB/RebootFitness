@@ -1,0 +1,17 @@
+@use '../../styles/abstracts' as *;
+
+.button {
+    background: $color-primary-black;
+    color: $color-primary-white;
+    font-family: $font-lato;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 1.25rem;
+    padding: 0.75rem 0.625rem;
+
+    &:hover, 
+    &:active {
+        opacity: 0.6499999761581421;
+    }
+}
