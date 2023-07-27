@@ -3,9 +3,13 @@ import LoginSignUp from './LoginLink';
 import styles from '../../header/Header.module.scss';
 
 
-export default function NavbarLinks() {
+export default function NavbarLinks({ isOpen }) {
+    const navbarLinksStyle = {
+        top: isOpen ? '4em' : '-100vh',  // Move it up 100vh + 1rem when open, otherwise position it below the header
+        transition: 'top 0.3s ease-in-out', // Add the transition effect
+    }
   return (
-    <ul className={styles.linkWrapper}>
+    <ul  style={navbarLinksStyle} className={styles.linkWrapper}>
         <li>
             <Link to='/about'>About</Link>
         </li>

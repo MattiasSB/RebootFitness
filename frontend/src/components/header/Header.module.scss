@@ -1,14 +1,31 @@
 @use '../../styles/abstracts' as *;
 header {
     position: fixed;
-    height: fit-content;
+    z-index: 999999;
+    min-height: fit-content;
+    height: 4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    @include mq(medium) {
+        height: auto;
+        display: static;
+    }
     width: 100vw;
     top: 0;
     background: $color-primary-black;
+    .hamburgerMenu {
+        color: $color-primary-white;
+        margin-right: 1.1em;
+        @include mq(medium) {
+            display: none;
+        }
+    }
     .header {
         margin: 0 auto;
         font-family: $font-lato;
         width: 100vw;
+        min-height: fit-content;
         max-width: 90rem;
         .loginIcon {
             color: $color-primary-white;
@@ -18,7 +35,6 @@ header {
             justify-content: space-between;
             align-items: center;
             max-height: 5.6em;
-            height: 100vh;
             ul:last-child a svg{
                 margin-left: 1.2em;
             }
@@ -26,14 +42,38 @@ header {
                 padding-left: 0.2em;
             }
             ul {
-                margin-right: 2.55em;
+                min-height: calc(100vh - 4em);
+                top: calc(100vh + 1em);
+                background: $color-primary-black;
+                width: 100vw;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                z-index: 9;
+                @include mq(medium) {
+                    max-width: fit-content;
+                    flex-direction: row;
+                    position: static;
+                    margin-right: 2.55em;
+                    background: none;
+                }
+            }
+            ul li {
+                margin: 1em 0;
+                @include mq(medium) {
+                    margin: 0;
+                }
             }
             li a {
-                margin: 1.5em;
                 font-size: to_rem(16);
+                @include mq(medium) {
+                    margin: 0 1.9vw;
+                }
             }
-            li a:hover, li a:hover svg {
+            li a:hover, li a:hover svg, .headerLogo:hover, .hamburgerMenu:hover {
                 color: $color-secondary-purple;
+                cursor: pointer;
             }
             ul li a, .headerLogo {
                 text-decoration: none;
@@ -41,18 +81,24 @@ header {
                 font-weight: 300;
             }
             .headerLogo{
-                margin: 0 2.5em;
+                margin: 1.1em 1.8em;
                 text-decoration: none;
                 text-transform: uppercase;
-                font-size: 1.51em;
+                font-size: 0.98em;
                 letter-spacing: to_rem(2);
+                @include mq(medium) {
+                    font-size: 1.51em;
+                    margin: 0 2.5em;
+                }
             } 
         }   
         .loginSignUpContainer{
             display: flex;
             align-items: center;
             justify-content: center;
+            
         }
         
     }
+
 }
