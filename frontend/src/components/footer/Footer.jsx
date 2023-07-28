@@ -1,19 +1,23 @@
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Call } from 'iconsax-react';
+import { Facebook, Instagram, Call, ArrowUp2 } from 'iconsax-react';
 
 export default function Footer() {
   return (
     <footer>
-      <div>
-        <div className={styles.footer}>
+      <div className={styles.scrollTopContainer}>
+        <ArrowUp2 />
+        <p>Scroll to Top</p>
+      </div>
+      <div className={styles.footerWrapper}>
+        <div className={styles.footerDesktopContainer}>
           <div>
-            <ul className={styles.verticalLinkList}>
-              <li className={styles.logo}>
+            <div className={styles.logo}>
                 <Link to='/'>
                   Reboot
                 </Link>
-              </li>
+            </div>
+            <ul className={styles.verticalLinkList}>
               <li>
                 <Link to='/about' >
                   About
@@ -36,47 +40,51 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className={styles.footerRight}>
-            <h3>Stay Connected</h3>
-            <input className={styles.stayConnected} placeholder='Email Address' type="text" />
-            <button>Subscribe</button>
-            <ul className={styles.socialLinks}>
-              <li>
-                <Link to='/'>
-                  <Facebook size='32' />
-                </Link>
-              </li>
-              <li>
-                <Link to='/'>
-                  <Instagram size='32' />
-                </Link>
-              </li>
-              <li>
-                <Link to='/'>
-                  <Call size='32' />
-                </Link>
-              </li>
-            </ul>
+          <div className={styles.footerContainer}>
+            <div className={styles.footerRight}>
+              <div className={styles.emailNewsLetterSignUp}>
+                <h3>Stay Connected</h3>
+                <input className={styles.stayConnected} placeholder='Email Address' type="text" />
+                <button><span>Subscribe</span></button>
+              </div>
+              <ul className={styles.socialLinks}>
+                <li>
+                  <Link to='/'>
+                    <Facebook />
+                  </Link>
+                </li>
+                <li>
+                  <Link to='/'>
+                    <Instagram />
+                  </Link>
+                </li>
+                <li>
+                  <Link to='/'>
+                    <Call />
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <ul className={styles.horizontalLinkList}>
-              <li>
-                <Link to='/'>
-                  Terms and Conditions | 
-                </Link>
-              </li>
-              <li>
-                <Link to='/'>
-                  Privacy Policy | 
-                </Link>
-              </li>
-              <li>
-                <Link to='/'>
-                  Sitemap
-                </Link>
-              </li>
-            </ul>
-        </div>
+            <li>
+              <Link to='/'>
+                Terms and Conditions | 
+              </Link>
+            </li>
+            <li>
+              <Link to='/'>
+                 Privacy Policy | 
+              </Link>
+            </li>
+            <li>
+              <Link to='/'>
+                 Sitemap
+              </Link>
+            </li>
+        </ul>
+      </div>
     </footer>
   )
 }

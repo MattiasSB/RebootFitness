@@ -54,8 +54,9 @@ header {
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                position: absolute;
+                position: fixed;
                 z-index: 100;
+                transition: top 0.5s ease-in-out;
                 @include mq(medium) {
                     max-width: fit-content;
                     flex-direction: row;
