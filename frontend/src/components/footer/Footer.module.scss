@@ -64,9 +64,9 @@ footer{
             }
         }
         .horizontalLinkList {
-            @include flex(end, center);
+            @include flex(flex-end, center);
             @include mq(medium) {
-                @include flex(end, flex-start);
+                @include flex(flex-end, flex-start);
                 width: 87vw;
                 max-width: 51.43em;
                 margin: 0 auto;
@@ -99,7 +99,7 @@ footer{
             display: none;
             @include mq(medium) {
                 flex-direction: column;
-                @include flex(start, center);
+                @include flex(flex-start, center);
             }
         }
         .footerContainer {
@@ -134,7 +134,7 @@ footer{
             .emailNewsLetterSignUp {
                 flex-direction: column;
                 margin-bottom: 1.2em;
-                @include flex(start, end);
+                @include flex(flex-start, flex-end);
                 input {
                     margin: 2em 0;
                     outline: none;
