@@ -1,0 +1,16 @@
+@use '../../styles/abstracts' as *;
+
+.button {
+    @include flex(center, center);
+    font-family: $font-lato;
+    padding: 0.625rem;
+    border: none;
+    width: 100%;
+    border-radius: 1.25rem;
+    background: $color-primary-white;
+    border: 1.2px solid $color-primary-black;
+
+    img {
+        padding-right: 0.62rem;
+    }
+}

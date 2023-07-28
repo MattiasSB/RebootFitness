@@ -1,0 +1,21 @@
+@use '../../styles/abstracts' as *;
+
+
+.input {
+    width: 100%;
+    padding: 0;
+    outline: none;
+    border: none;
+    border-bottom: 1.2px solid $color-primary-black;
+    background: none;
+    padding-bottom: 0.44rem;
+    margin-bottom: 1.69rem;
+
+    &::placeholder {
+        font-family: Lato;
+        font-size: 0.875rem;
+        color: $color-placeholder-grey;
+        font-weight: 200;
+    }
+}
+
