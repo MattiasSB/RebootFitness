@@ -25,7 +25,8 @@ h1, .h1 {
 
 h2, .h2 {
     font-family: $font-lato;
-    font-size: 1.125rem;
+    font-size: 1.1875rem;
+    text-transform: uppercase;
 
     @include mq(large) {
         font-size: 2.5rem;
