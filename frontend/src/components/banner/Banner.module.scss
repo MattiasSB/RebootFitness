@@ -1,0 +1,58 @@
+@use '../../styles/abstracts' as *;
+
+.banner {
+    background: $color-primary-black;
+    color: $color-primary-white;
+    height: 75vh;
+    @include flex(flex-end, center);
+
+    @include mq(large) {
+        padding-bottom: 5.6rem;
+    }
+    //padding-top: 4rem;
+}
+
+.heading {
+    padding-inline: 1.875rem;
+    text-align: center;
+    @include flex(center, flex-start, column);
+    height: 55%;
+
+    @include mq(medium) {
+        padding-inline: 5.875rem;
+        justify-content: flex-start;
+    }
+    @include mq(large) {
+        padding-inline: 27.38rem;
+    }
+
+    h1 {
+        margin-bottom: 1.12rem;
+
+        @include mq(large) {
+            margin-bottom: 2.5rem;  
+        }
+    }
+
+    p {
+        font-size: 0.875rem;
+        font-weight: 300;
+        line-height: 142.857%;
+    }
+
+    a {
+        margin-block: 4.51rem;
+        @include flex(center, center);
+        color: $color-primary-white;
+        text-decoration: none;
+
+        @include mq(large) {
+            margin-block: 3.3rem 10.25rem;
+            margin-block: 7.51rem;
+        }
+
+        svg {
+            margin-left: 0.38rem;
+        }
+    }
+}

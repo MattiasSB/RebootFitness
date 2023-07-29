@@ -1,0 +1,23 @@
+@use '../../styles/abstracts' as *;
+
+.button {
+    background: $color-primary-black;
+    cursor: pointer;
+    margin: 0 auto;
+    margin-top: 1.53rem;
+    color: $color-primary-white;
+    text-transform: uppercase;
+    width: 7.25rem;
+    height: 2.125rem;
+    border-radius: 1.25rem;
+    @include flex(center, center);
+    font-family: $font-lato;
+    font-size: 0.6875rem;
+
+    @include mq(large) {
+        margin-top: 3.56rem;
+        min-width: 11.125rem;
+        height: 2.3125rem;
+    }
+}
+

@@ -65,12 +65,6 @@ export default function SignUp() {
               value={password}
               onChange={onChange}
             />
-            <Link
-              to="/forgot-password"
-              className={styles.forgotPassword}
-            >
-              Forgot password?
-            </Link>
             <ButtonAuth />
           </form>
         </LayoutAuth>

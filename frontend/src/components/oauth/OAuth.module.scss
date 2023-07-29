@@ -13,4 +13,9 @@
     img {
         padding-right: 0.62rem;
     }
+
+    &:hover, 
+    &:active {
+        opacity: 0.6499999761581421;
+    }
 }

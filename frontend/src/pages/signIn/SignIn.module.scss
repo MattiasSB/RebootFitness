@@ -17,7 +17,7 @@
         }
 
         &::placeholder {
-            font-family: Lato;
+            font-family: $font-lato;
             font-size: 0.875rem;
             color: $color-placeholder-grey;
             font-weight: 200;

@@ -3,10 +3,19 @@ import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Call, ArrowUp2 } from 'iconsax-react';
 
 export default function Footer() {
+
+  const handleScroll = () => {
+    window.scrollTo({
+      top: 0, 
+      behavior: 'smooth'
+    });
+    
+  }
   return (
     <footer>
-      <div className={styles.scrollTopContainer}>
-        <ArrowUp2 />
+      <div className={styles.scrollTopContainer} onClick={handleScroll}>
+        <ArrowUp2 
+        />
         <p>Scroll to Top</p>
       </div>
       <div className={styles.footerWrapper}>
