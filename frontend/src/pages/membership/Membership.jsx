@@ -9,10 +9,10 @@ export default function Membership() {
   return (
     <>
       <Banner 
-        title='experience blah blah blaj'
+        title='EXPERIENCE BLAH BLAH BLAH BLAH'
         text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'
         navigateTo='/'
-        linkText='link?'
+        linkText='Join Now'
       />
       <section className={styles.membership}>
         <div className={`wrapper ${styles.membership__plan}`}>
@@ -48,14 +48,17 @@ export default function Membership() {
           <div className={styles.heading}>
             <h2>benefits</h2>
           </div>
-          <ul>
+          {/* <ul> */}
             {services.map((item, index) => (
-              <li key={index}>
+              <div 
+                key={index}
+                className={`${styles[`service_${index}`]}`}
+              >
                   <h3>{item.title}</h3>
                   <p>{item.desc}</p>
-              </li>
+              </div>
             ))}
-          </ul>
+          {/* </ul> */}
           <p>
           Unleash the best version of yourself! Join our gym community today and embark on a transformative fitness journey like no other. From building strength to improving endurance and overall well-being, our gym offers a wealth of benefits to explore
           </p>

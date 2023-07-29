@@ -18,7 +18,7 @@
 
     @include mq(large) {
         grid-area: 2 / 2 / span 2 / span 3;
-        align-self: self-start;
+        align-self: center;
     }
 
     h1 {
@@ -62,7 +62,7 @@
 
     @include mq(large) {
         grid-area: 2 / 6 / span 3 / span 6;
-        align-self: self-start;
+        align-self: center;
         padding: 3.75rem 6.88rem 4.75rem;
     }
     

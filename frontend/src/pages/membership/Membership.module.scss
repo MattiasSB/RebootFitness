@@ -4,7 +4,7 @@
     margin: 4.06rem 0;
 
     @include mq(large) {
-        margin: 6.35rem 0;
+        margin: 9.62rem 0;
     }
 
     &__plan {
@@ -41,18 +41,36 @@
     @include grid;
     grid-template-rows: repeat(3, 1fr);
 
+    @include mq(medium) {
+        @include grid-col(1, 8);
+        grid-template-rows: repeat(2, 1fr);
+    }
     @include mq(large) {
         @include grid-col(1, 12);
         grid-template-rows: unset;
+    }
+
+    li:last-child {
+        @include mq(medium) {
+            @include grid-col(3, 4);
+        }
+
+        @include mq(large) {
+            @include grid-col(auto, 4);
+        }
     }
 }
 
 .planListItems {    
     border: 1px solid $color-primary-black;
     min-height: 20.8125rem;
-    padding: 0 2rem;
+    padding: 0 2.16rem;
     margin-bottom: 1rem;
     @include grid-col(auto ,4);
+
+    @include mq(medium) {
+        min-height: 21.813rem;
+    }
 
     @include mq(large) {
         min-height: 29.49563rem;
@@ -60,6 +78,10 @@
 
     .content {
         min-height: 14.5rem;
+
+        @include mq(medium) {
+            min-height: 16.5rem;
+        }
 
         @include mq(large) {
             min-height: 20.3125rem;
@@ -153,12 +175,19 @@
 
     &__list {
         @include grid;
+        row-gap: 2.76rem;
 
         @include mq(large) {
            // grid-template-rows: repeat(2, 1fr);
+           row-gap: 2.31rem;
         }
 
         .heading {
+
+            @include mq(medium) {
+                @include grid-col(1, 4);
+                grid-row: 1 /span 1
+            }
             @include mq(large) {
                 @include grid-col(-3, 2);
             }
@@ -172,46 +201,89 @@
                 font-size: 1.125rem;
             }
         }
-
-        ul {
-            @include grid-col(1, 4);
-            @include flex(flex-start, flex-start, column);
-            flex-wrap: wrap;
-
-            @include mq(large) {
-                @include grid-col(1, 10);
-                grid-row: 1 / span 1;
-                flex-direction: row;
-            }
-    
-            li {
-                margin-bottom: 2.75rem;
-                flex-basis: 23%;
-                padding-right: 1.5rem;
-               // margin: 0 1.2rem 2.75rem 0;
-              //  align-self: flex-end;
-
-            //   &:last-child {
-            //     position: relative;
-            //     top: -50%
-            //   }
-            }
-        }
     
         p {
             @include grid-col(1, 4);
 
             @include mq(large) {
-                grid-column: 8/span 5;
+                grid-column: 7/span 6;
                 align-self: flex-end;
-                position: relative;
-                top: -50%;
             }
         }
     }
 }
 
+.service_0,
+.service_1,
+.service_2 {
+
+    @include mq(medium) {
+        grid-row: 2 / span 1;
+    }
+
+    @include mq(large) {
+        grid-row: 1 / span 1;
+    }
+}
+
+.service_0,
+.service_1,
+.service_2,
+.service_3,
+.service_4 {
+    @include grid-col(1,4);
+}
+
+.service_0 {
+    @include mq(medium) {
+        @include grid-col(1, 2);
+    }
+
+}
+
+.service_1 {
+    @include mq(medium) {
+        @include grid-col(4, 2);
+    }
+
+}
+
+.service_2 {
+    @include mq(medium) {
+        @include grid-col(7, 2);
+    }
+}
+
+.service_3 {
+    @include mq(medium) {
+        grid-row: 3 / span 1;
+        @include grid-col(1, 2);
+    }
+    @include mq(large) {
+    
+        grid-row: 2 / span 1;
+    }
+}
+
+.service_4 {
+    margin-bottom: 1.2rem;
+
+    @include mq(medium) {
+        grid-row: 3 / span 1;
+        @include grid-col(4, 2);
+    }
+
+    @include mq(large) {
+        grid-row: 2 / span 1;
+    }
+}
+
 .offers {
+    position: relative;
+
+    @include mq(large) {
+        margin: 9.62rem 0;
+    }
 
     &__list {
         @include grid;
@@ -219,11 +291,25 @@
         .heading {
             @include grid-col(1, 4);
             justify-self: center;
+
+            @include mq(medium) {
+                grid-row: 1/ span 1;
+                justify-self: flex-start;
+            }
         }
     }
 
     .content {
         @include grid-col(1, 4);
+
+        @include mq(medium) {
+            align-self: center;
+        }
+
+        @include mq(large) {
+            grid-row: 1/ span 2;
+            align-self: center;
+        }
         
         ul {
             margin-bottom: 5.92rem;
@@ -247,19 +333,40 @@
     }
 
     .dumbbell_img {
+
         @include grid-col(1, 4);
         margin-top: 3.38rem;
+
+        @include mq(medium) {
+            @include grid-col(5, 4);
+        }
+
+        @include mq(large) {
+            @include grid-col(6, 3);
+            grid-row: 1 / span 2;
+            margin-top: 0;
+        }
 
         img {
             width: 100%;
             object-fit: cover;
             max-height: 24.37394rem;
+
+            @include mq(large) {
+                min-height:  33.6585rem
+            }
         }
     }
 
     .exercise_img {
         @include grid-col(1, 4);
         margin: 1.28rem 0 2.25rem;
+
+         @include mq(large) {
+            grid-column: 10/span 3;
+            margin-right: -23%;
+            align-self: center;
+         }
 
         img {
             width: 100%;
@@ -270,6 +377,16 @@
 
     .joinReboot {
         @include grid-col(1, 4);
+
+        @include mq(medium) {
+            @include grid-col(5, 4);
+            align-self: center;
+            justify-self: flex-end;
+        }
+        @include mq(large) {
+            @include grid-col(10, 3);
+        }
+
     }
 }
 

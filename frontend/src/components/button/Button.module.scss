@@ -16,6 +16,8 @@
 
     @include mq(large) {
         margin-top: 3.56rem;
+        min-width: 11.125rem;
+        height: 2.3125rem;
     }
 }
 
