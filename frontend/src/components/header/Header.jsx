@@ -48,8 +48,11 @@ export default function Header() {
 const handleMenuToggle = () => {
   setMenuOpen((prevMenuState) => {
     if (!prevMenuState) {
-      // Add the class to disable scrolling when the menu is opened
-      document.body.style.overflow = "hidden";
+      if (window.innerWidth < 768){
+        // Add the class to disable scrolling when the menu is opened
+        document.body.style.overflow = "hidden";
+      }
+      
     } else {
       // Remove the class to enable scrolling when the menu is closed
       document.body.style.overflow = "initial"
@@ -61,9 +64,11 @@ const handleMenuToggle = () => {
 
 useEffect(() => {
   const handleResize = () => {
-    setMenuOpen(false);
-    // Remove the class to enable scrolling when the menu is closed
-    document.body.style.overflow = "initial"
+    if (window.innerWidth > 768){
+      setMenuOpen(false);
+      // Remove the class to enable scrolling when the menu is closed
+      document.body.style.overflow = "initial"
+    }
   };
 
   window.addEventListener('resize', handleResize);
