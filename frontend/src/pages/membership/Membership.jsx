@@ -57,7 +57,7 @@ export default function Membership() {
             ))}
           </ul>
           <p>
-            Unleash the best version of yourself! Join our gym community today and embark on a transformative fitness journey like no other. From building strength to improving endurance and overall well-being, our gym offers a wealth of benefits to explore
+          Unleash the best version of yourself! Join our gym community today and embark on a transformative fitness journey like no other. From building strength to improving endurance and overall well-being, our gym offers a wealth of benefits to explore
           </p>
         </div>
       </section>
@@ -88,13 +88,13 @@ export default function Membership() {
           <div className={styles.dumbbell_img}>
             <img 
               src="https://s3-alpha-sig.figma.com/img/bb80/1401/27421740c2907c3187d8419cac914b3d?Expires=1691366400&Signature=KU4H11JpcKW9q5ivTR2hsgBv~bmfRd0hBGSyBOCRFu6uJuFxO1V-vO6Mwc4-HEwlTWumI7gVvVyHT2S1dhAnoUnlxOP5W2-sfk9QgWqKzk7Iyx9cIbR-3~WblBD-LXv7LwvjLplgi1031lwYz3LaXrjMap24AdqLiiiveZjhhM6hbWrI7oA3o2-UtW4~2UsDY79mXVZ-eNOwCXZVJXmdBkh9LWsupO5GK2ENaIFDF9uTK5QH6urJ4De2rcCV0PVXpY-Z3T7RfZUh2zo0g~n7M6yMuovQQDM8kGTGkeokNDlnKj2kzalGx8GYLQ27TyHwBBQ4jxrN6vYB~44K3katSQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" 
-              alt="image of person holding black and silver dumbbell" 
+              alt="person holding black and silver dumbbell" 
             />
           </div>
           <div className={styles.exercise_img}>
               <img 
                 src="https://s3-alpha-sig.figma.com/img/2dde/798b/d12137b836ec5f929eb16b3ae41ffdcc?Expires=1691366400&Signature=iFIp3kSr6ShE-dWg2HCoD4WqirYq7qPpLCUIUFfVzU~1dkm1KCnZWsWvSUTKC-FGfeiJWDAewGZwXi36-ULrSSfNKxEtfvWyGnFR~~dkZVg~ROoL3gQAWhM2loOXHRlSg~N3KRJVT5XxQ55bRb1Ya8IZylYbElbyG3uZfW9ETQUOTHCpzgsUHo~bv6AEyE6t1JIBDtmxTREO81AOoSOU-LxTeqDVa-T5e8k7Qc4BvzdpQsHttG-D2bDSl~CtOdWQ9eSrYnm~MvUGTAjEoIID8AjGyDME~BKQXR4AaDYrkykKCnNxcA-kh-omqMJBeTdPvUY1dwDM19HvKH3PGZCNJQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" 
-                alt="image of man exercising" 
+                alt="man exercising" 
               />
           </div>
           <div className={styles.joinReboot}>

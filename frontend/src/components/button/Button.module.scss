@@ -13,5 +13,9 @@
     @include flex(center, center);
     font-family: $font-lato;
     font-size: 0.6875rem;
+
+    @include mq(large) {
+        margin-top: 3.56rem;
+    }
 }
 

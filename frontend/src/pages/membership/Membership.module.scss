@@ -3,6 +3,10 @@
 .membership {
     margin: 4.06rem 0;
 
+    @include mq(large) {
+        margin: 6.35rem 0;
+    }
+
     &__plan {
         @include grid;
     
@@ -24,9 +28,13 @@
 
     h2 {
         margin: 0.67rem 0 2.3rem;
+
+        @include mq(large) {
+            margin: 0.75rem 0 4.06rem;
+        }
+
     }
 }
-
 
 .planList {
     @include grid-col(1, 4);
@@ -35,6 +43,7 @@
 
     @include mq(large) {
         @include grid-col(1, 12);
+        grid-template-rows: unset;
     }
 }
 
@@ -48,8 +57,6 @@
     @include mq(large) {
         min-height: 29.49563rem;
     }
-
-
 
     .content {
         min-height: 14.5rem;
@@ -96,6 +103,10 @@
     ul {
         margin-top: 2.25rem;
 
+        @include mq(large) {
+            margin-top: 3.54rem;
+        }
+
         li {
             @include list-item;
             font-family: $font-roboto;
@@ -103,6 +114,11 @@
             font-style: normal;
             font-weight: 400;
             line-height: 1.25rem; /* 142.857% */
+
+            @include mq(large) {
+                font-size: 1.09375rem;
+                line-height: 1.65625rem; /* 151.429% */
+            }
         }
     }
 }
@@ -123,6 +139,13 @@
     font-style: normal;
     font-weight: 400;
     line-height: 142.857%;
+
+    @include mq(large) {
+        font-size: 1.09375rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.65625rem; /* 151.429% */
+    }
 }
 
 .benefits {
@@ -131,28 +154,62 @@
     &__list {
         @include grid;
 
+        @include mq(large) {
+           // grid-template-rows: repeat(2, 1fr);
+        }
+
+        .heading {
+            @include mq(large) {
+                @include grid-col(-3, 2);
+            }
+        }
         h3 {
             font-weight: 400;
             text-transform: uppercase;
             margin-bottom: 0.36rem;
+
+            @include mq(large) {
+                font-size: 1.125rem;
+            }
         }
 
         ul {
             @include grid-col(1, 4);
             @include flex(flex-start, flex-start, column);
             flex-wrap: wrap;
+
+            @include mq(large) {
+                @include grid-col(1, 10);
+                grid-row: 1 / span 1;
+                flex-direction: row;
+            }
     
             li {
                 margin-bottom: 2.75rem;
+                flex-basis: 23%;
+                padding-right: 1.5rem;
+               // margin: 0 1.2rem 2.75rem 0;
+              //  align-self: flex-end;
+
+            //   &:last-child {
+            //     position: relative;
+            //     top: -50%
+            //   }
             }
         }
     
         p {
             @include grid-col(1, 4);
+
+            @include mq(large) {
+                grid-column: 8/span 5;
+                align-self: flex-end;
+                position: relative;
+                top: -50%;
+            }
         }
     }
 }
-
 
 .offers {
 
@@ -172,7 +229,6 @@
             margin-bottom: 5.92rem;
             li {
                 @include list-item;
-            
             }
         }
 
