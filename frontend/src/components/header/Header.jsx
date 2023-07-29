@@ -78,11 +78,18 @@ useEffect(() => {
   };
 }, []);
 
+const handleHome = () => {
+  setMenuOpen(false);
+  // Remove the class to enable scrolling when the menu is closed
+  document.body.style.overflow = "initial"
+}
+
   return (
     <header ref={navRef}>
       <nav className={styles.header}>
         <div className={styles.linkWrapper}>
           <Link 
+            onClick={handleHome}
             className={styles.headerLogo} 
             to='/'
           >
