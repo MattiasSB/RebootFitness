@@ -1,5 +1,6 @@
 @use '../../styles/abstracts' as *;
 
+
 header {
     position: fixed;
     z-index: 999999;
@@ -60,7 +61,7 @@ header {
                 z-index: 100;
                 transition: top 0.5s ease-in-out;
                 @include mq(medium) {
-                    min-height: 4em;
+                    min-height: 6em;
                     max-width: fit-content;
                     flex-direction: row;
                     position: static;
