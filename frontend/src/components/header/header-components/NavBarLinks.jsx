@@ -7,7 +7,6 @@ import { User } from 'iconsax-react';
 export default function NavbarLinks({ isOpen, toggleMenu }) {
     const navbarLinksStyle = {
         top: isOpen ? '4em' : '-100vh',  // Move it up 100vh + 1rem when open, otherwise position it below the header
-        transition: 'all 0.5s ease-in-out', // Add the transition effect
     }
   return (
     <ul  style={navbarLinksStyle} className={styles.linkWrapper}>

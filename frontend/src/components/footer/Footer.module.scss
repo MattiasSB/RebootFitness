@@ -1,0 +1,182 @@
+@use '../../styles/abstracts' as *;
+
+
+footer{
+    a:hover {
+        color: $color-secondary-purple
+    }
+    .scrollTopContainer {
+        @include flex(center, center);
+        flex-direction: column;
+        width: 100vw;
+        height: 3.4em;
+        border-top: to_rem(0.001) solid $color-placeholder-grey;
+        svg {
+            color: $color-placeholder-grey;
+        }
+        p{
+            color: $color-placeholder-grey;
+                font-family: $font-lato;
+                font-weight: 300;
+                font-size: 0.75em;
+        }
+        @include mq(medium) {
+            display: none;
+        }
+    }
+    a {
+        text-decoration: none;
+    }
+    & a, h3 {
+        color: $color-primary-white;
+        font-family: $font-lato;
+        font-weight: 300;
+        font-size: 0.6em;
+    }
+    h3{
+        text-transform: uppercase;
+        @include mq(medium) {
+            font-size: 1.1em;
+        }
+    }
+    
+    .footerWrapper{
+        background: $color-primary-black;
+        flex-direction: column;
+        max-height: 22em;
+        height: fit-content;
+        @include flex(center, center);
+        @include mq(medium) {
+            max-height: 25em;
+            .verticalLinkList {
+                font-size: 1.75em;
+                margin-bottom: 1em;
+                li {
+                    padding-bottom: 0.1em;
+                }
+            }
+        }
+        .footerDesktopContainer {
+            @include mq(medium) {
+                @include flex(center, space-between);
+                width: 87vw;
+                max-width: 90em;
+            }
+        }
+        .horizontalLinkList {
+            @include flex(flex-end, center);
+            @include mq(medium) {
+                @include flex(flex-end, flex-start);
+                width: 87vw;
+                max-width: 51.43em;
+                margin: 0 auto;
+                padding-bottom: 1em;
+                font-size: 1.75em;
+            }
+            padding-bottom: 1.3em;
+        }
+        .logo{
+            font-family: $font_logo;
+            letter-spacing: to_rem(2);
+            text-align: left;
+            font-size: 2em;
+            text-transform: uppercase;
+            width: 87vw;
+            @include mq(medium) {
+                width: fit-content;
+                max-width: 90em;
+                margin: 0;
+                font-size: 4em;
+                padding: 0 0 0.3em 0;
+            }
+            align-self: flex-start;
+            padding: 0.6em 0 1em 0;
+            margin: 0 auto;
+            
+        }
+    
+        .verticalLinkList{
+            display: none;
+            @include mq(medium) {
+                flex-direction: column;
+                @include flex(flex-start, center);
+            }
+        }
+        .footerContainer {
+            width: 87vw;
+            max-width: 90em;
+            padding-top: 1em;
+            @include mq(medium) {
+                @include flex(center, space-between);
+                width: fit-content;
+                margin-top: 4em
+            }
+            .socialLinks {
+                @include flex(center, center);  
+                margin-bottom: 1em;
+                @include mq(medium) { 
+                    justify-content: flex-start;
+                }
+                li {
+                    margin: 1em 0.8em;
+                    @include mq(medium) {
+                        margin: 1em 2.25vw 1em 0;
+                    }
+                }
+                svg {
+                    height: 2.6em;
+                    width: auto;
+                    @include mq(medium) {
+                        height: 3.2em;
+                    }
+                }
+            }
+            .emailNewsLetterSignUp {
+                flex-direction: column;
+                margin-bottom: 1.2em;
+                @include flex(flex-start, flex-end);
+                input {
+                    margin: 2em 0;
+                    outline: none;
+                    stroke: none;
+                    border: none;
+                    background: none;
+                    color: $color-primary-white;
+                    border-bottom: to_rem(1) solid $color-primary-white;
+                    font-family: $font-lato;
+                    padding-bottom: 0.3em;
+                    font-weight: 100;
+                    width: 100%;
+                    font-size: 0.7em;
+                    @include mq(medium) {
+                        width: 27vw;
+                        font-size: 1em;
+                    }
+                }
+                input::placeholder {
+                    color: $color-primary-white;
+                }
+                button {
+                    margin: 0.6em 0;
+                    padding: 0;
+                    outline: none;
+                    box-shadow: none;
+                    border: none;
+                    background: none;
+                    stroke: none;
+                    span {
+                        color: $color-primary-black;
+                        padding: 0.7em 2em;
+                        background: $color-primary-white;
+                        border-radius: to_rem(20);
+                        @include mq(medium){
+                            padding: 0.65em 4vw;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
+}
