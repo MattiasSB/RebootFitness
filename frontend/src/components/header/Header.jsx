@@ -8,6 +8,7 @@ import { useState } from 'react';
 export default function Header() {
 
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isHeaderSolid, setHeaderSolid] = useState(false);
 
   const navRef = useRef()
 
@@ -47,11 +48,16 @@ const handleMenuToggle = () => {
       if (window.innerWidth < 768){
         // Add the class to disable scrolling when the menu is opened
         document.body.style.overflow = "hidden";
+        setHeaderSolid(true); 
+        // Set header background to solid black when menu is opened
+      
       }
       
     } else {
       // Remove the class to enable scrolling when the menu is closed
       document.body.style.overflow = "initial"
+      setHeaderSolid(false); 
+      // Set header background to default state when menu is closed
     }
     return !prevMenuState;
   });
@@ -77,11 +83,12 @@ useEffect(() => {
 const handleHome = () => {
   setMenuOpen(false);
   // Remove the class to enable scrolling when the menu is closed
+  setHeaderSolid(false)
   document.body.style.overflow = "initial"
 }
 
   return (
-    <header ref={navRef}>
+    <header style={{ backgroundColor: isHeaderSolid ? 'black' : 'rgba(0, 0, 0, 0.648)' }} ref={navRef}>
       <nav className={styles.header}>
         <div className={styles.linkWrapper}>
           <Link 
