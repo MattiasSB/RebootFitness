@@ -1,0 +1,46 @@
+@use '../../styles/abstracts' as *;
+
+.classes {
+    @include grid;
+    margin-block: 4.06rem 5rem;
+
+    @include mq(large) {
+        margin-block: 6.61rem 11.81rem;
+    }
+}
+
+.chooseAClass {
+    @include grid-col(1, 4);
+    margin-bottom: 1.62rem;
+
+    @include mq(medium) {
+        @include grid-col(1, 8);
+    }
+
+    @include mq(large) {
+        @include grid-col(4, 6);
+    }
+
+    h2 {
+        font-size: 0.875rem;
+        text-align: center;
+
+        @include mq(large) {
+            font-size: 1.3125rem;
+            font-weight: 500;
+        }
+    }
+}
+
+.filter {
+    cursor: pointer;
+}
+
+.class {
+    @include grid-col(1, 4);
+    @include flex(center, space-between);
+
+    @include mq(medium) {
+        @include grid-col(1, 8);
+    }
+}
