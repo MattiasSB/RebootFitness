@@ -41,3 +41,16 @@ h3, .h3 {
         font-size: 1.75rem;
     }
 }
+
+h4, .h4 {
+    font-family: $font-lato;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+
+    @include mq(large) {
+        font-size: 1.5625rem;
+        line-height: 152%;
+    }
+}

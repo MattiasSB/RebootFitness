@@ -1,0 +1,62 @@
+@use '../../../styles/abstracts' as *;
+
+.classFilter {
+    @include grid-col(1, 4);
+    @include flex(center, space-between);
+
+    @include mq(medium) {
+        @include grid-col(1, 8);
+    }
+
+    @include mq(large) {
+        @include grid-col(4, 6);
+    }
+
+}
+
+.classList {
+    @include grid-col(1, 4);
+    @include grid;
+
+    @include mq(medium) {
+        @include grid-col(1, 8);
+    }
+
+    @include mq(large) {
+        @include grid-col(1, 12);
+    }
+
+    h2 {
+        margin-block: 3.44rem 1.25rem;
+
+        @include mq(medium) {
+            @include grid-col(1, 8);
+        }
+
+        @include mq(large) {
+            margin-block: 6.75rem 2.56rem;
+        }
+    }
+    
+    img {
+        @include grid-col(1, 4);
+        max-width: 100%;
+        margin-bottom: 2.44rem;
+
+        @include mq(large) {
+            @include grid-col(1, 5);
+        }
+    }
+}
+
+.classItems {
+    @include grid-col(1, 4);
+
+    @include mq(medium) {
+        @include grid-col(5, 4);
+    }
+
+    @include mq(large) {
+        @include grid-col(7, 6);
+    }
+}

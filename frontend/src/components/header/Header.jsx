@@ -17,15 +17,12 @@ export default function Header() {
   const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       if (prevScrollpos > currentScrollPos - 1) {
-          if(window.innerWidth < 1024 ) {
+          if(window.innerWidth > 1024 ) {
               navRef.current.style.top = "0";
-          } else{
-            navRef.current.style.top = "0";
-          }
-      } else {
-          if(window.innerWidth < 1024) {
-            navRef.current.style.top = "-6rem";
-          } else {
+          } 
+      } 
+      else {
+          if(window.innerWidth > 1024) {
             navRef.current.style.top = "-6rem";
           }
         
