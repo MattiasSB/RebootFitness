@@ -5,7 +5,6 @@ import NavbarLinks from './header-components/NavBarLinks';
 import MenuToggle from './header-components/MenuToggle';
 import { useState } from 'react';
 
-
 export default function Header() {
 
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -13,8 +12,6 @@ export default function Header() {
   const navRef = useRef()
 
   let prevScrollpos = window.scrollY;
-
-  
 
   const handleScroll = () => {
       const currentScrollPos = window.scrollY;
@@ -25,21 +22,23 @@ export default function Header() {
       } 
       else {
           if(window.innerWidth > 1024) {
+              // ** i just left this as it is since 6rem is just for positioning i didn't think it matters with the header height also I changed the height of header to 5.125rem
             navRef.current.style.top = "-6rem";
+          } else {
+            navRef.current.style.top = "0";
           }
-        
       }
+
       prevScrollpos = currentScrollPos;
   }
 
   useEffect(() => {
-
     window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, ); 
+  }, []); 
 
 // Function to toggle the menu state
 const handleMenuToggle = () => {

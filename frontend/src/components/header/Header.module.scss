@@ -11,7 +11,7 @@ header {
     justify-content: flex-end;
     transition: top 300ms ease;
     @include mq(medium) {
-        height: auto;
+        height: 5.125rem;
         display: static;
     }
     width: 100vw;
