@@ -4,6 +4,7 @@
     background: $color-primary-black;
     color: $color-primary-white;
     height: 75vh;
+    overflow: hidden;
     @include flex(flex-end, center);
 
     @include mq(large) {
@@ -47,8 +48,7 @@
         text-decoration: none;
 
         @include mq(large) {
-            margin-block: 3.3rem 10.25rem;
-            margin-block: 7.51rem;
+            margin-block: 17% 27%;
         }
 
         svg {
