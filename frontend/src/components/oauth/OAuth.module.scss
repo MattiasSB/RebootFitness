@@ -14,6 +14,16 @@
         padding-right: 0.62rem;
     }
 
+    @include mq(large) {
+        p {
+            font-family: $font-lato;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
     &:hover, 
     &:active {
         opacity: 0.6499999761581421;

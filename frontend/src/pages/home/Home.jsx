@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 
 import styles from './Home.module.scss'
-import banner from '../../assets/images/banner.jpg'
 import Button from '../../components/button'
 import { home } from '../../data/home'
 
