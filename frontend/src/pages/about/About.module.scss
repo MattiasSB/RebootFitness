@@ -53,18 +53,12 @@
 
                     
             &:nth-of-type(3) {
-
-                // img {
-                //     max-width: 37.5rem;
-                // }
-
                 .image {
                     margin-top: -11rem;
                 }
             }
 
             &:nth-of-type(4) {
-
                 .content {
                     @include grid-col(7, 6);
                     padding-left: 0
@@ -77,7 +71,6 @@
             }
 
             &:nth-of-type(5) {
-
                 .content {
                     @include grid-col(1, 5);
                     padding-right: 0;
