@@ -1,10 +1,14 @@
 
+import { Link } from 'react-router-dom'
 import styles from './Button.module.scss'
 
-export default function Button({text}) {
+export default function Button({navigateTo, text}) {
   return (
-    <div className={styles.button}>
+    <Link 
+      to={navigateTo}    
+      className={styles.button}
+    >
       {text}
-    </div>
+    </Link>
   )
 }

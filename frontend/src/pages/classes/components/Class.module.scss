@@ -42,6 +42,7 @@
         @include grid-col(1, 4);
         max-width: 100%;
         margin-bottom: 2.44rem;
+        justify-self: center;
 
         @include mq(large) {
             @include grid-col(1, 5);

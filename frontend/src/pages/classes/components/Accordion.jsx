@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { Add, Minus } from 'iconsax-react';
 import { motion } from 'framer-motion'
 
-
 import styles from './Accordion.module.scss'
 
 export default function Accordion({item, index}) {
