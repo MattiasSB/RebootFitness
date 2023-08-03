@@ -1,12 +1,5 @@
 @use '../abstracts/' as *;
 
-@for $i from 1 through 6 {
-    h#{i}, 
-    .h#{i} {
-        font-family: $font-lato;
-    }
-}
-
     /*
         they haven't firmly decided on font size yet 
         use these for now and lets update later on 
@@ -14,6 +7,7 @@
     */
 
 h1, .h1 {
+    font-family: $font-lato;
     font-size: 1.25rem;
     font-weight: 400;
     font-style: normal;
@@ -30,7 +24,9 @@ h1, .h1 {
 }
 
 h2, .h2 {
-    font-size: 1.125rem;
+    font-family: $font-lato;
+    font-size: 1.1875rem;
+    text-transform: uppercase;
 
     @include mq(large) {
         font-size: 2.5rem;
@@ -38,9 +34,38 @@ h2, .h2 {
 }
 
 h3, .h3 {
+    font-family: $font-lato;
     font-size: 1rem;
 
     @include mq(large) {
         font-size: 1.75rem;
+    }
+}
+
+h4, .h4 {
+    font-family: $font-lato;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+
+    @include mq(large) {
+        font-size: 1.5625rem;
+        line-height: 152%;
+    }
+}
+
+p, .p {
+    font-family: $font-roboto;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25rem; /* 142.857% */
+
+    @include mq(large) {
+        font-size: 1.09375rem;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 1.65625rem; /* 151.429% */
     }
 }

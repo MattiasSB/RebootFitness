@@ -1,0 +1,31 @@
+@use '../../../styles/abstracts' as *;
+
+.accordion {
+
+    &__class {
+    @include flex(center, space-between);
+    border-bottom: to_rem(1.2) solid $color-primary-black;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+    cursor: pointer;
+
+        @include mq(medium) {
+            margin-bottom: 1.5rem;
+        }
+
+        @include mq(large) {
+            padding-bottom: 1rem;
+            border-bottom: to_rem(2) solid $color-primary-black;
+            margin-bottom: 2.06rem;
+        }
+    }
+
+    p {
+        margin-bottom: 1.5rem;
+        line-height: 150%;
+
+        @include mq(large) {
+            padding-right: 2rem;
+        }
+    }
+}

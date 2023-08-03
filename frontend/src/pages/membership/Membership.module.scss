@@ -1,0 +1,392 @@
+@use '../../styles/abstracts' as *;
+
+.membership {
+    margin: 4.06rem 0;
+
+    @include mq(large) {
+        margin: 9.62rem 0;
+    }
+
+    &__plan {
+        @include grid;
+    
+        .heading {
+        
+            span {
+                font-family: $font-lato;
+                font-size: 0.9375rem;
+                font-weight: 300;
+                text-transform: uppercase;
+                margin-bottom: 0.67rem;
+            }
+        }
+    }
+}
+
+.heading {
+    @include grid-col(1, 4);
+
+    h2 {
+        margin: 0.67rem 0 2.3rem;
+
+        @include mq(large) {
+            margin: 0.75rem 0 4.06rem;
+        }
+
+    }
+}
+
+.planList {
+    @include grid-col(1, 4);
+    @include grid;
+    grid-template-rows: repeat(3, 1fr);
+
+    @include mq(medium) {
+        @include grid-col(1, 8);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    @include mq(large) {
+        @include grid-col(1, 12);
+        grid-template-rows: unset;
+    }
+
+    li:last-child {
+        @include mq(medium) {
+            @include grid-col(3, 4);
+        }
+
+        @include mq(large) {
+            @include grid-col(auto, 4);
+        }
+    }
+}
+
+.planListItems {    
+    border: 1px solid $color-primary-black;
+    min-height: 20.8125rem;
+    padding: 0 2.16rem;
+    margin-bottom: 1rem;
+    @include grid-col(auto ,4);
+
+    @include mq(medium) {
+        min-height: 21.813rem;
+    }
+
+    @include mq(large) {
+        min-height: 29.49563rem;
+    }
+
+    .content {
+        min-height: 14.5rem;
+
+        @include mq(medium) {
+            min-height: 16.5rem;
+        }
+
+        @include mq(large) {
+            min-height: 20.3125rem;
+        }
+    }
+
+    h3 {
+        margin-top: 1.63rem;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+
+        @include mq(large) {
+            font-size: 1.5rem;
+        }
+    }
+
+    h4 {
+        font-family: $font-roboto;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-top: 0.98rem;
+
+        @include mq(large) {
+            margin-top: 1.63rem; 
+            font-size: 2.25rem;
+        }
+    }
+
+    p {
+        font-family: $font-roboto;
+        margin-top: 0.1rem;
+        font-size: 0.625rem;
+        font-weight: 300;
+
+        @include mq(large) {
+            font-size: 0.875rem;
+            margin-top: 0.52rem;
+        }
+    }
+
+    ul {
+        margin-top: 2.25rem;
+
+        @include mq(large) {
+            margin-top: 3.54rem;
+        }
+
+        li {
+            @include list-item;
+            font-family: $font-roboto;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.25rem; /* 142.857% */
+
+            @include mq(large) {
+                font-size: 1.09375rem;
+                line-height: 1.65625rem; /* 151.429% */
+            }
+        }
+    }
+}
+
+.planType {
+    @include flex(flex-start, flex-start, column);
+
+    @include mq(large) {
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+}
+
+.benefits, .offers {
+    font-family: $font-roboto;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 142.857%;
+
+    @include mq(large) {
+        font-size: 1.09375rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.65625rem; /* 151.429% */
+    }
+}
+
+.benefits {
+    margin: 4.06rem 0;
+
+    &__list {
+        @include grid;
+        row-gap: 2.76rem;
+
+        @include mq(large) {
+           // grid-template-rows: repeat(2, 1fr);
+           row-gap: 2.31rem;
+        }
+
+        .heading {
+
+            @include mq(medium) {
+                @include grid-col(1, 4);
+                grid-row: 1 /span 1
+            }
+            @include mq(large) {
+                @include grid-col(-3, 2);
+            }
+        }
+        h3 {
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: 0.36rem;
+
+            @include mq(large) {
+                font-size: 1.125rem;
+            }
+        }
+    
+        p {
+            @include grid-col(1, 4);
+
+            @include mq(large) {
+                grid-column: 7/span 6;
+                align-self: flex-end;
+            }
+        }
+    }
+}
+
+.service_0,
+.service_1,
+.service_2 {
+
+    @include mq(medium) {
+        grid-row: 2 / span 1;
+    }
+
+    @include mq(large) {
+        grid-row: 1 / span 1;
+    }
+}
+
+.service_0,
+.service_1,
+.service_2,
+.service_3,
+.service_4 {
+    @include grid-col(1,4);
+}
+
+.service_0 {
+    @include mq(medium) {
+        @include grid-col(1, 2);
+    }
+
+}
+
+.service_1 {
+    @include mq(medium) {
+        @include grid-col(4, 2);
+    }
+
+}
+
+.service_2 {
+    @include mq(medium) {
+        @include grid-col(7, 2);
+    }
+}
+
+.service_3 {
+    @include mq(medium) {
+        grid-row: 3 / span 1;
+        @include grid-col(1, 2);
+    }
+    @include mq(large) {
+    
+        grid-row: 2 / span 1;
+    }
+}
+
+.service_4 {
+    margin-bottom: 1.2rem;
+
+    @include mq(medium) {
+        grid-row: 3 / span 1;
+        @include grid-col(4, 2);
+    }
+
+    @include mq(large) {
+        grid-row: 2 / span 1;
+    }
+}
+
+.offers {
+    position: relative;
+
+    @include mq(large) {
+        margin: 9.62rem 0;
+    }
+
+    &__list {
+        @include grid;
+
+        .heading {
+            @include grid-col(1, 4);
+            justify-self: center;
+
+            @include mq(medium) {
+                grid-row: 1/ span 1;
+                justify-self: flex-start;
+            }
+        }
+    }
+
+    .content {
+        @include grid-col(1, 4);
+
+        @include mq(medium) {
+            align-self: center;
+        }
+
+        @include mq(large) {
+            grid-row: 1/ span 2;
+            align-self: center;
+        }
+        
+        ul {
+            margin-bottom: 5.92rem;
+            li {
+                @include list-item;
+            }
+        }
+
+        p {
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: -2rem;
+                width: 100%;
+                height: 1px;
+                background: $color-primary-black;
+            }
+        }
+    }
+
+    .dumbbell_img {
+
+        @include grid-col(1, 4);
+        margin-top: 3.38rem;
+
+        @include mq(medium) {
+            @include grid-col(5, 4);
+        }
+
+        @include mq(large) {
+            @include grid-col(6, 3);
+            grid-row: 1 / span 2;
+            margin-top: 0;
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            max-height: 24.37394rem;
+
+            @include mq(large) {
+                min-height:  33.6585rem
+            }
+        }
+    }
+
+    .exercise_img {
+        @include grid-col(1, 4);
+        margin: 1.28rem 0 2.25rem;
+
+         @include mq(large) {
+            grid-column: 10/span 3;
+            margin-right: -23%;
+            align-self: center;
+         }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            max-height: 24.37394rem;
+        }
+    }
+
+    .joinReboot {
+        @include grid-col(1, 4);
+
+        @include mq(medium) {
+            @include grid-col(5, 4);
+            align-self: center;
+            justify-self: flex-end;
+        }
+        @include mq(large) {
+            @include grid-col(10, 3);
+        }
+
+    }
+}
+

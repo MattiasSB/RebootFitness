@@ -1,0 +1,30 @@
+@use '../../styles/abstracts' as *;
+
+.link {
+    @include flex(center, flex-start);
+    margin: 0 auto;
+    margin-top: 1.38rem;
+
+    p {
+        color: #535353;
+        font-family: $font-lato;
+        font-size: 0.8125rem;
+    }
+
+
+    @include mq(large) {
+        p {
+            color: #535353;
+            text-align: center;
+            font-size: 0.75rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    a {
+        color: $color-secondary-purple;
+        margin-left: 0.3rem;
+    }
+}

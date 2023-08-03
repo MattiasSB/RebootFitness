@@ -2,10 +2,11 @@
 /*
     Fonts 
 */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Roboto:wght@100;300;400;700;900&family=Ubuntu:wght@300&display=swap');
 
 $font-lato: 'Lato', sans-serif;
 $font-roboto: 'Roboto', sans-serif;
+$font_logo: 'Ubuntu', sans-serif;
 
 /*
     Colors 
@@ -13,4 +14,11 @@ $font-roboto: 'Roboto', sans-serif;
 $color-primary-black: #000000;
 $color-primary-white: #ffffff;
 $color-secondary-purple: #735eed;
+$color-placeholder-grey: #858585;
 $color-red: #f14343;
+
+/*
+    Hover Effect
+*/
+
+$opacity: 0.6499999761581421;
