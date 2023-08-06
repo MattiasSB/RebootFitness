@@ -10,14 +10,14 @@ import Button from '../../components/button'
 export default function About() {
 
   return (
-    <>
+    <main>
       <Banner
         title='transform your body, transform life'
         text="Our mission is to empower you to make positive changes in your life, both physically and mentally, as you uncover the incredible potential within yourself."
         navigateTo='/membership'
         linkText='Join Now'
       />
-      <main className={`${styles.about}`}>
+      <section className={`${styles.about}`}>
       {about.map((item, index) => (
         <section 
           key={index}
@@ -62,7 +62,7 @@ export default function About() {
                 <div className={`wrapper ${styles.findGym}`}>
                   <div className={`${styles.inputField}`}>
                     <SearchNormal1 
-                      size= {window.innerWidth >= 1040 ? "32" : "20"}
+                      size= {window.innerWidth >= 1040 ? "25" : "15"}
                       color="#646464"
                     />
                     <input 
@@ -114,7 +114,7 @@ export default function About() {
             </div>
         </section>
       ))}
-      </main>
-    </>
+      </section>
+    </main>
   )
 }

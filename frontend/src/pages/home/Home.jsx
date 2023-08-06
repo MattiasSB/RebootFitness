@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 
+import { ArrowDown } from 'iconsax-react'
+
 import styles from './Home.module.scss'
 import Button from '../../components/button'
 import { home } from '../../data/home'
@@ -7,7 +9,7 @@ import { home } from '../../data/home'
 
 export default function Home() {
   return (
-    <>
+    <main>
       <div className={styles.banner}>
           <div className={styles.heading}>
             <h1>Fitness <br />Redesigned</h1>
@@ -26,9 +28,16 @@ export default function Home() {
               navigateTo='/membership'
               text="join today"
             />
+            <div className={styles.scroll}>
+                <p>Scroll</p>
+                <ArrowDown
+                  size="27"
+                  color="#ffffff"
+                />
+            </div>
           </div>
       </div>
-       <main className={`${styles.home}`}>
+       <div className={`${styles.home}`}>
       {home.map((item, index) => (
         <section 
           key={index}
@@ -81,7 +90,7 @@ export default function Home() {
             </div>
         </section>
       ))}
-      </main>
-    </>
+      </div>
+    </main>
   )
 }

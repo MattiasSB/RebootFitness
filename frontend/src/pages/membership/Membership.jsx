@@ -7,10 +7,10 @@ import Button from '../../components/button/Button'
 export default function Membership() {
 
   return (
-    <>
+    <main>
       <Banner 
-        title='EXPERIENCE BLAH BLAH BLAH BLAH'
-        text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'
+        title='COMMIT TO YOUR GOALS AND START TODAY'
+        text='Experience quality training and state of the art equipment for better performance and build strong habits that produce results'
         navigateTo='/'
         linkText='Join Now'
       />
@@ -37,7 +37,7 @@ export default function Membership() {
                   ))}
                 </ul>
               </div>
-              <Button text='button'/>
+              <Button text='select'/>
             </li>
           )}
           </ul>
@@ -48,7 +48,6 @@ export default function Membership() {
           <div className={styles.heading}>
             <h2>benefits</h2>
           </div>
-          {/* <ul> */}
             {services.map((item, index) => (
               <div 
                 key={index}
@@ -58,7 +57,6 @@ export default function Membership() {
                   <p>{item.desc}</p>
               </div>
             ))}
-          {/* </ul> */}
           <p>
           Unleash the best version of yourself! Join our gym community today and embark on a transformative fitness journey like no other. From building strength to improving endurance and overall well-being, our gym offers a wealth of benefits to explore
           </p>
@@ -107,6 +105,6 @@ export default function Membership() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   )
 }

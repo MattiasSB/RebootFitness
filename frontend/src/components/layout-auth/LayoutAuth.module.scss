@@ -18,13 +18,17 @@
 
     @include mq(large) {
         grid-area: 2 / 2 / span 2 / span 3;
-        align-self: center;
+        align-self: self-start;
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
         text-transform: capitalize;
         margin-bottom: 0.5rem;
+
+        @include mq(xsmall) {
+            font-size: 2.5rem;
+        }
 
         @include mq(large) {
             font-size: 4.375rem;
@@ -63,7 +67,7 @@
     @include mq(large) {
         grid-area: 2 / 6 / span 3 / span 6;
         align-self: center;
-        padding: 3.75rem 6.88rem 4.75rem;
+        padding: 3.75rem 6.88rem 3.75rem;
     }
     
     h2 {
@@ -71,6 +75,7 @@
         font-size: 1.5rem;
         font-style: normal;
         font-weight: 500;
+        text-transform: capitalize;
     }
 }
 

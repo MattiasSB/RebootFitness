@@ -2,11 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 
 import './App.scss';
+import PrivateRoute from './components/privateRoute';
 import Home from './pages/home'
 import Header from './components/header/Header';
 import Footer from './components/footer';
 import SignIn from './pages/signIn'
 import SignUp from './pages/signUp'
+import Profile from './pages/profile/Profile';
 import ForgotPassword from './pages/forgotPassword';
 import About from './pages/about'
 import Classes from './pages/classes';
@@ -28,6 +30,10 @@ function App() {
         <Route path='/booking' element={<Booking />} />
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
+        <Route path='/profile' element={<Profile />} />
+       {/* <Route path='/profile' element={<PrivateRoute />}>
+          <Route path='/profile' element={<Profile />} />
+       </Route> */}
         <Route path='/forgot-password' element={<ForgotPassword />}/>
       </Routes>
       <Footer />

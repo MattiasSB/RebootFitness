@@ -88,7 +88,10 @@ const handleHome = () => {
 }
 
   return (
-    <header style={{ backgroundColor: isHeaderSolid ? 'black' : 'rgba(0, 0, 0, 0.648)' }} ref={navRef}>
+    <header 
+      style={{ backgroundColor: isHeaderSolid ? 'black' : 'rgba(0, 0, 0, 0.648)' }} 
+      ref={navRef}
+    >
       <nav className={styles.header}>
         <div className={styles.linkWrapper}>
           <Link 
