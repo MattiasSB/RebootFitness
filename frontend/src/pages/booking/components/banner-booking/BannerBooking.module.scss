@@ -1,0 +1,79 @@
+@use '../../../../styles/abstracts' as *;
+
+.banner {
+    background: $color-primary-black;
+    color: $color-primary-white;
+    height: 80vh;
+    overflow: hidden;
+    @include flex(center, center);
+
+    @include mq(large) {
+        padding-bottom: 5.6rem;
+    }
+    //padding-top: 4rem;
+}
+
+.heading {
+    padding-top: 10vh;
+    padding-inline: 1.875rem;
+    @include flex(flex-start, flex-start, column);
+    height: 55%;
+    width: 45vw;
+    max-width: to_rem(500);
+    @include mq(large) {
+        padding-inline: 27.38rem;
+    }
+
+    h1 {
+        margin-bottom: 1.12rem;
+
+        @include mq(large) {
+            margin-bottom: 2.5rem;  
+        }
+    }
+    h4 {
+        margin: 1em 0;
+        text-transform: uppercase;
+    }
+
+}
+
+.button {
+    margin: 0 auto;
+    background: $color-primary-white;
+    cursor: pointer;
+   // margin: 0 auto;
+    margin-top: 1.53rem;
+    color: $color-primary-black;
+    text-transform: uppercase;
+    width: 7.25rem;
+    height: 2.125rem;
+    border-radius: 1.25rem;
+    @include flex(center, center);
+    font-family: $font-lato;
+    font-size: 0.6875rem;
+    text-decoration: none;
+
+    @include mq(large) {
+        margin-top: 3.56rem;
+        min-width: 11.125rem;
+        height: 2.3125rem;
+        min-height: 2.3125em;
+        font-size: 1rem;
+    }
+}
+
+select {
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    color: $color-primary-white;
+    border-bottom: to_rem(3) solid $color-primary-white;
+    padding-bottom: 1em;
+    margin: 4em 0 2em 0 ;
+
+}
+
+
+

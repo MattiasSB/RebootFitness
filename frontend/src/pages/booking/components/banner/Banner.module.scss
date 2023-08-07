@@ -1,0 +1,39 @@
+@use '../../../../styles/abstracts' as *;
+
+.banner {
+    background: $color-primary-black;
+    color: $color-primary-white;
+    height: 75vh;
+    overflow: hidden;
+    @include flex(flex-end, center);
+
+    @include mq(large) {
+        padding-bottom: 5.6rem;
+    }
+    //padding-top: 4rem;
+}
+
+.heading {
+    padding-inline: 1.875rem;
+    text-align: center;
+    @include flex(center, flex-start, column);
+    height: 55%;
+
+    @include mq(medium) {
+        padding-inline: 5.875rem;
+        justify-content: flex-start;
+    }
+    @include mq(large) {
+        padding-inline: 27.38rem;
+    }
+
+    h1 {
+        margin-bottom: 1.12rem;
+
+        @include mq(large) {
+            margin-bottom: 2.5rem;  
+        }
+    }
+
+}
+
