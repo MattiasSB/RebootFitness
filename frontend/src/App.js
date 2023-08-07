@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useLocation } from 'react-router-dom';
 
 import './App.scss';
-import PrivateRoute from './components/privateRoute';
 import Home from './pages/home'
 import Header from './components/header/Header';
 import Footer from './components/footer';

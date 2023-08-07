@@ -2,7 +2,7 @@
 
 .about {
     @include grid;
-    margin-block: 3.44rem;
+    margin-block: 3.44rem 0;
     max-width: 90rem;
     margin-inline: auto;
 
@@ -99,13 +99,20 @@
 }
 
 .description {
-    margin-block: 2rem 3.62rem;
+    margin-block: 2rem 2.31rem;
+
+    a {
+        width: 9.8125rem;
+        height: 2.125rem;
+        margin-bottom: 3.63rem;
+    }
 
     @include mq(large) {
         margin-block: 3.96rem;
 
         a {
             margin-top: 2.75rem;
+ 
         }
     }
 }

@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom'
 
 import { ArrowDown } from 'iconsax-react'
@@ -5,11 +6,15 @@ import { ArrowDown } from 'iconsax-react'
 import styles from './Home.module.scss'
 import Button from '../../components/button'
 import { home } from '../../data/home'
-
+import { useGsapImageAnim } from '../../lib/gsap/useGsapImageAnim'
 
 export default function Home() {
+  const imageRef = useGsapImageAnim('#js-image');
+
   return (
-    <main>
+    <main
+    ref={imageRef}
+    >
       <div className={styles.banner}>
           <div className={styles.heading}>
             <h1>Fitness <br />Redesigned</h1>
@@ -67,23 +72,50 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className={styles.image}>
+          <div 
+            className={styles.image}
+
+          >
             { 
               item.src && item.src_2 ? (
               <div className={styles.imageContainer}>
                 <picture>
-                  <source media='(min-width: 768px)' srcSet={item.src}/>
-                  <img src={item.src_m} alt={item.heading} />
+                  <source 
+                    media='(min-width: 768px)' 
+                    srcSet={item.src}
+                    id='js-image'
+                  />
+                  <img 
+                    src={item.src_m} 
+                    alt={item.heading} 
+                    id='js-image'
+                  />
                 </picture>
                 <picture>
-                  <source media='(min-width: 768px)' srcSet={item.src_2}/>
-                  <img src={item.src_m_2} alt={item.heading} />
+                  <source 
+                    media='(min-width: 768px)'
+                    srcSet={item.src_2}
+                    id='js-image'
+                  />
+                  <img
+                    id='js-image' 
+                    src={item.src_m_2} 
+                    alt={item.heading} 
+                  />
                 </picture>
               </div>
               ) : (
               <picture>
-              <source media='(min-width: 768px)' srcSet={item.src}/>
-              <img src={item.src_m} alt={item.heading} />
+              <source 
+                id='js-image'
+                media='(min-width: 768px)' 
+                srcSet={item.src}
+              />
+              <img 
+                id='js-image'
+                src={item.src_m} 
+                alt={item.heading} 
+              />
               </picture>
               ) 
             }

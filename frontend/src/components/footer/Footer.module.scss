@@ -170,13 +170,22 @@ footer{
                     border: none;
                     background: none;
                     stroke: none;
+                    text-transform: uppercase;
+                    
                     span {
                         color: $color-primary-black;
                         padding: 0.7em 2em;
                         background: $color-primary-white;
                         border-radius: to_rem(20);
+                        transition: all 300ms ease;
                         @include mq(medium){
                             padding: 0.65em 4vw;
+                        }
+
+                        &:hover, 
+                        &:active {
+                            color: $color-primary-white;
+                            background: $color-secondary-purple;
                         }
                     }
                 }

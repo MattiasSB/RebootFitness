@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { getAuth, updateProfile } from 'firebase/auth'
 import { updateDoc, doc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
-import { MoreCircle, Add } from 'iconsax-react'
+import { Add } from 'iconsax-react'
 
 import styles from './Profile.module.scss'
 import useAuth from '../../hooks/useAuth'

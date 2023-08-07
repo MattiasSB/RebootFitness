@@ -63,7 +63,7 @@
 
 .planListItems {    
     border: 1px solid $color-primary-black;
-    min-height: 20.8125rem;
+    min-height: 22.813rem;
     padding: 0 2.16rem;
     margin-bottom: 1rem;
     @include grid-col(auto ,4);
@@ -73,18 +73,18 @@
     }
 
     @include mq(large) {
-        min-height: 29.49563rem;
+        min-height: 31.496rem;
     }
 
     .content {
-        min-height: 14.5rem;
+        min-height: 17rem;
 
         @include mq(medium) {
             min-height: 16.5rem;
         }
 
         @include mq(large) {
-            min-height: 20.3125rem;
+            min-height: 21.5rem;
         }
     }
 
@@ -177,6 +177,7 @@
 .benefits {
     margin: 4.06rem 0;
 
+
     &__list {
         @include grid;
         row-gap: 2.76rem;
@@ -187,6 +188,10 @@
         }
 
         .heading {
+
+            h2 {
+                margin: 0;
+            }
 
             @include mq(medium) {
                 @include grid-col(1, 4);
@@ -384,14 +389,18 @@
 
     .joinReboot {
         @include grid-col(1, 4);
+        margin-bottom: 5rem;
 
         @include mq(medium) {
             @include grid-col(5, 4);
             align-self: center;
             justify-self: flex-end;
+            margin-bottom: unset;
         }
         @include mq(large) {
             @include grid-col(10, 3);
+            justify-self: flex-start;
+            align-self: flex-start;
         }
 
     }

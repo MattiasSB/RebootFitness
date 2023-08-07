@@ -12,9 +12,12 @@ export default function Header() {
 
   const navRef = useRef()
 
-  let prevScrollpos = window.scrollY;
 
-  const handleScroll = () => {
+
+  useEffect(() => {
+    let prevScrollpos = window.scrollY;
+
+    const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       if (prevScrollpos > currentScrollPos - 1) {
           if(window.innerWidth > 1024 ) {
@@ -31,9 +34,8 @@ export default function Header() {
       }
 
       prevScrollpos = currentScrollPos;
-  }
+    }
 
-  useEffect(() => {
     window.addEventListener('scroll', handleScroll);
 
     return () => {

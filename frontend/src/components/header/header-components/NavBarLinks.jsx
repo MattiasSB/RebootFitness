@@ -12,7 +12,6 @@ export default function NavbarLinks({ isOpen, toggleMenu }) {
         top: isOpen ? '4em' : '-100vh',  // Move it up 100vh + 1rem when open, otherwise position it below the header
     }
 
-    console.log( location.pathname)
   return (
     <ul  style={navbarLinksStyle} className={styles.linkWrapper}>
         <li>

@@ -146,7 +146,7 @@
 
 .home {
     @include grid;
-    margin-block: 3.44rem;
+    margin-block: 3.44rem 0;
     max-width: 90rem;
     margin-inline: auto;
 
@@ -218,6 +218,8 @@
                     align-self: center;
                     text-align: right;
                     margin-bottom: to_rem(135);
+                    padding: 0;
+                    padding-left: 3rem;
 
                     a {
                         margin-left: auto;
@@ -236,9 +238,14 @@
                     @include grid-col(1, 5);
                     align-self: center;
                     margin-top: -5rem;
+                    padding-right: 1.5rem;
 
                     p {
                         margin-bottom: 7.56rem
+                    }
+
+                    h2 {
+                        width: 75%;
                     }
                 }
 
@@ -274,16 +281,13 @@
 }
 
 .description {
-    margin-block: 2rem 3.62rem;
+    margin-block: 2rem 2.31rem;
 
 
     &:last-child {
         p {
             margin-bottom: 2.56rem;
 
-            // @include mq(large) {
-            //     margin-bottom: 7.56rem;
-            // }
         }
     }
 

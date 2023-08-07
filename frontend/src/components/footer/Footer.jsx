@@ -78,7 +78,9 @@ export default function Footer() {
               <div className={styles.emailNewsLetterSignUp}>
                 <h3>Stay Connected</h3>
                 <input className={styles.stayConnected} placeholder='Email Address' type="text" />
-                <button><span>Subscribe</span></button>
+                <button className='active'>
+                  <span>Subscribe</span>
+                </button>
               </div>
               <ul className={styles.socialLinks}>
                 <li>

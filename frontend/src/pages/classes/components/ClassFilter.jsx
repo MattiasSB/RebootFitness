@@ -23,7 +23,7 @@ export default function ClassFilter({filter}) {
         className={styles.filter}
         style={{
             background: active === item ? '#000000' : '#ffffff',
-            color: active === item ? '#ffffff' : '#000000'
+            color: active === item ? '#ffffff' : '#858585'
         }}
         onClick={() => handleClick(item)}
         >

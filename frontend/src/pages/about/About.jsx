@@ -6,11 +6,15 @@ import styles from './About.module.scss'
 import Banner from '../../components/banner'
 import { about } from '../../data/about'
 import Button from '../../components/button'
+import { useGsapImageAnim } from '../../lib/gsap/useGsapImageAnim'
 
 export default function About() {
+  const imageRef = useGsapImageAnim('#js-image');
 
   return (
-    <main>
+    <main
+      ref={imageRef}
+    >
       <Banner
         title='transform your body, transform life'
         text="Our mission is to empower you to make positive changes in your life, both physically and mentally, as you uncover the incredible potential within yourself."
@@ -45,18 +49,42 @@ export default function About() {
               item.src && item.src_2 ? (
               <div className={styles.imageContainer}>
                 <picture>
-                  <source media='(min-width: 768px)' srcSet={item.src}/>
-                  <img src={item.src_m} alt={item.heading} />
+                  <source 
+                    id='js-image'
+                    media='(min-width: 768px)' 
+                    srcSet={item.src}
+                  />
+                  <img 
+                    id='js-image'
+                    src={item.src_m} 
+                    alt={item.heading} 
+                  />
                 </picture>
                 <picture>
-                  <source media='(min-width: 768px)' srcSet={item.src_2}/>
-                  <img src={item.src_m_2} alt={item.heading} />
+                  <source 
+                    id='js-image' 
+                    media='(min-width: 768px)' 
+                    srcSet={item.src_2}
+                  />
+                  <img 
+                    id='js-image'
+                    src={item.src_m_2} 
+                    alt={item.heading} 
+                  />
                 </picture>
               </div>
               ) : item.src ? (
               <picture>
-              <source media='(min-width: 768px)' srcSet={item.src}/>
-              <img src={item.src_m} alt={item.heading} />
+              <source 
+                id='js-image'
+                media='(min-width: 768px)' 
+                srcSet={item.src}
+              />
+              <img 
+                id='js-image'
+                src={item.src_m} 
+                alt={item.heading}
+               />
               </picture>
               ) : (
                 <div className={`wrapper ${styles.findGym}`}>
