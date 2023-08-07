@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^10.1.0",
     "framer-motion": "^10.15.0",
+    "gsap": "^3.12.2",
     "i": "^0.3.7",
     "iconsax-react": "^0.0.8",
     "npm": "^9.8.1",

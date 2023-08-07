@@ -28,7 +28,7 @@ export default function Class() {
         </div>
         <div className={styles.classList}>
             <h2>{name}</h2>
-            <img src={src} alt={`${name} image`} />
+            <img src={src} alt={`${name}`} />
             <div className={styles.classItems}>
             {type.map((item, index) => (
                <Accordion 

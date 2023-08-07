@@ -2,32 +2,36 @@
 
 .filter {
     @include flex(center, center);
-     width: 31%;
-     padding-block: 0.625rem;
-     gap: 0.625rem;
-     flex-shrink: 0;
-     font-family: $font-lato;
-     font-size: 0.6875rem;
-     text-transform: uppercase;
-     border-radius: 1.25rem;
-     border: to_rem(1) solid $color-primary-black;
-     background: $color-primary-white;
-     transition: all 300ms ease;
- 
-     &:hover {
-       opacity: $opacity;
-     }
- 
-     &:active, &:target {
-         background: $color-primary-black;
-         color: $color-primary-white;
-     }
+    width: 31%;
+    color: $color-placeholder-grey;
+    height: 1.75rem;
+    gap: 0.625rem;
+    flex-shrink: 0;
+    font-family: $font-lato;
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    border-radius: 1.25rem;
+    border: to_rem(1) solid $color-primary-black;
+    background: $color-primary-white;
+    transition: all 300ms ease;
 
-     @include mq(large) {
-        width: 30%;
-        font-size: 1.125rem;
-        font-weight: 500;
-        border: to_rem(2) solid $color-primary-black;
-     }
+    &:hover {
+      opacity: $opacity;
+    }
+
+    &:active, &:target {
+        background: $color-primary-black;
+        color: $color-primary-white;
+    }
+
+    @include mq(large) {
+      width: 30%;
+      font-size: 1.125rem;
+      font-weight: 500;
+      width: 12.5rem;
+      border-radius: 2.6875rem;
+      height: 2.875rem;
+      border: to_rem(2) solid $color-primary-black;
+    }
  }
 

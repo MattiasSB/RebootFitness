@@ -6,8 +6,7 @@ export default function Button({navigateTo, text, style}) {
   return (
     <Link 
       to={navigateTo}    
-      className={styles.button}
-      style={style}
+      className={`active ${styles.button}`}
     >
       {text}
     </Link>

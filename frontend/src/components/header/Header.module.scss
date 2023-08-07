@@ -36,6 +36,7 @@ header {
         .loginIcon {
             color: $color-primary-white;
         }
+        
         .linkWrapper{
             display: flex;
             justify-content: space-between;
@@ -77,6 +78,12 @@ header {
                 @include mq(medium) {
                     margin: 0;
                 }
+
+                .active {
+                    color: #FFF;
+                    font-style: italic;
+                }
+                
             }
             li a {
                 font-size: to_rem(16);
@@ -84,7 +91,7 @@ header {
                     margin: 0 1.9vw;
                 }
             }
-            li a:hover, li a:hover svg, .headerLogo:hover, .hamburgerMenu:hover {
+            li a:hover, li a:hover svg, .hamburgerMenu:hover {
                 color: $color-secondary-purple;
                 cursor: pointer;
             }
@@ -106,6 +113,7 @@ header {
                 }
             } 
         }   
+
         .loginSignUpContainer{
             display: flex;
             align-items: center;

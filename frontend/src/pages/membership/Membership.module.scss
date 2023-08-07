@@ -63,7 +63,7 @@
 
 .planListItems {    
     border: 1px solid $color-primary-black;
-    min-height: 20.8125rem;
+    min-height: 22.813rem;
     padding: 0 2.16rem;
     margin-bottom: 1rem;
     @include grid-col(auto ,4);
@@ -73,18 +73,18 @@
     }
 
     @include mq(large) {
-        min-height: 29.49563rem;
+        min-height: 31.496rem;
     }
 
     .content {
-        min-height: 14.5rem;
+        min-height: 17rem;
 
         @include mq(medium) {
             min-height: 16.5rem;
         }
 
         @include mq(large) {
-            min-height: 20.3125rem;
+            min-height: 21.5rem;
         }
     }
 
@@ -143,6 +143,10 @@
             }
         }
     }
+
+    a {
+        margin-inline: auto;
+    }
 }
 
 .planType {
@@ -173,6 +177,7 @@
 .benefits {
     margin: 4.06rem 0;
 
+
     &__list {
         @include grid;
         row-gap: 2.76rem;
@@ -183,6 +188,10 @@
         }
 
         .heading {
+
+            h2 {
+                margin: 0;
+            }
 
             @include mq(medium) {
                 @include grid-col(1, 4);
@@ -275,6 +284,7 @@
 
     @include mq(large) {
         grid-row: 2 / span 1;
+        margin-bottom: 0;
     }
 }
 
@@ -336,6 +346,7 @@
 
         @include grid-col(1, 4);
         margin-top: 3.38rem;
+        overflow: hidden;
 
         @include mq(medium) {
             @include grid-col(5, 4);
@@ -361,6 +372,7 @@
     .exercise_img {
         @include grid-col(1, 4);
         margin: 1.28rem 0 2.25rem;
+        overflow: hidden;
 
          @include mq(large) {
             grid-column: 10/span 3;
@@ -377,14 +389,18 @@
 
     .joinReboot {
         @include grid-col(1, 4);
+        margin-bottom: 5rem;
 
         @include mq(medium) {
             @include grid-col(5, 4);
             align-self: center;
             justify-self: flex-end;
+            margin-bottom: unset;
         }
         @include mq(large) {
             @include grid-col(10, 3);
+            justify-self: flex-start;
+            align-self: flex-start;
         }
 
     }

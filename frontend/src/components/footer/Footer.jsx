@@ -1,18 +1,42 @@
-import styles from './Footer.module.scss';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+
 import { Facebook, Instagram, Call, ArrowUp2 } from 'iconsax-react';
 
-export default function Footer() {
+import styles from './Footer.module.scss';
 
+
+
+export default function Footer() {
+  const location = useLocation()
+  const [displayFooter, setDisplayFooter] = useState(true)
   const handleScroll = () => {
     window.scrollTo({
       top: 0, 
       behavior: 'smooth'
     });
-    
   }
+
+  useEffect(() => {
+
+    const isSignInUp = location.pathname === '/sign-in' ||
+                        location.pathname === '/sign-up' ||
+                        location.pathname === '/profile'
+
+    if(isSignInUp) {
+      setDisplayFooter(false)
+    } else {
+      setDisplayFooter(true)
+    }
+
+  }, [location.pathname])
+
   return (
-    <footer>
+    <footer 
+      style={{
+        display: displayFooter ? "initial" : "none"
+      }}
+    >
       <div className={styles.scrollTopContainer} onClick={handleScroll}>
         <ArrowUp2 
         />
@@ -54,7 +78,9 @@ export default function Footer() {
               <div className={styles.emailNewsLetterSignUp}>
                 <h3>Stay Connected</h3>
                 <input className={styles.stayConnected} placeholder='Email Address' type="text" />
-                <button><span>Subscribe</span></button>
+                <button className='active'>
+                  <span>Subscribe</span>
+                </button>
               </div>
               <ul className={styles.socialLinks}>
                 <li>

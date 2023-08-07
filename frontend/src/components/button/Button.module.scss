@@ -12,7 +12,8 @@
     border-radius: 1.25rem;
     @include flex(center, center);
     font-family: $font-lato;
-    font-size: 0.6875rem;
+    font-weight: 300;
+    font-size: 0.8125rem;
     text-decoration: none;
 
     @include mq(large) {

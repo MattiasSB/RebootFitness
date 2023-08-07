@@ -12,7 +12,7 @@
         background: none;
         padding-bottom: 0.44rem;
 
-        &:not(:last-child) {
+        &:not(:last-of-type) {
             margin-bottom: 1.69rem;
         }
 
@@ -23,12 +23,45 @@
             font-weight: 200;
         }
     }
+
+    button {
+        margin-top: 2.88rem;
+
+        @include mq(large) {
+            margin-top: 2rem;
+        }
+    }
 }
 
-.forgotPassword {
-    color: #535353;
-    font-family: $font-lato;
+.error {
+    @include flex(center, space-between);
+    width: 100%;
     font-size: 0.75rem;
-    margin: 0.87rem 0 2.25rem auto ;
-}
+    margin-top: 0.5rem;
 
+    P {
+        font-size: 0.75rem;
+        color: $color-red;
+    }
+
+    .wrongPassword {
+        @include flex(center, flex-start);
+
+        div {
+            @include flex(center, center);
+            color: $color-primary-white;
+            background: $color-red;
+            width: to_rem(15);
+            height: to_rem(15);
+            border-radius: 50%;
+            font-size: 0.5625rem;
+            margin-right: 0.5rem;
+        }
+    }
+
+    .forgotPassword {
+        color: #535353;
+        font-family: $font-lato;
+        text-decoration: underline;
+    }
+}

@@ -3,14 +3,18 @@ import styles from './Membership.module.scss'
 import Banner from '../../components/banner'
 import { membershipPlan, services } from '../../data/membership'
 import Button from '../../components/button/Button'
+import dumbbell from '../../assets/images/dumbbell.jpg'
+import dumbbell_m from '../../assets/images/dumbbell-mobile.jpg'
+import exercise from '../../assets/images/exercise.jpg'
+
 
 export default function Membership() {
 
   return (
-    <>
+    <main>
       <Banner 
-        title='EXPERIENCE BLAH BLAH BLAH BLAH'
-        text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'
+        title='COMMIT TO YOUR GOALS AND START TODAY'
+        text='Experience quality training and state of the art equipment for better performance and build strong habits that produce results'
         navigateTo='/'
         linkText='Join Now'
       />
@@ -37,7 +41,7 @@ export default function Membership() {
                   ))}
                 </ul>
               </div>
-              <Button text='button'/>
+              <Button text='select'/>
             </li>
           )}
           </ul>
@@ -48,7 +52,6 @@ export default function Membership() {
           <div className={styles.heading}>
             <h2>benefits</h2>
           </div>
-          {/* <ul> */}
             {services.map((item, index) => (
               <div 
                 key={index}
@@ -58,7 +61,6 @@ export default function Membership() {
                   <p>{item.desc}</p>
               </div>
             ))}
-          {/* </ul> */}
           <p>
           Unleash the best version of yourself! Join our gym community today and embark on a transformative fitness journey like no other. From building strength to improving endurance and overall well-being, our gym offers a wealth of benefits to explore
           </p>
@@ -89,14 +91,26 @@ export default function Membership() {
             </p>
           </div>
           <div className={styles.dumbbell_img}>
-            <img 
+            {/* <img 
               src="https://s3-alpha-sig.figma.com/img/bb80/1401/27421740c2907c3187d8419cac914b3d?Expires=1691366400&Signature=KU4H11JpcKW9q5ivTR2hsgBv~bmfRd0hBGSyBOCRFu6uJuFxO1V-vO6Mwc4-HEwlTWumI7gVvVyHT2S1dhAnoUnlxOP5W2-sfk9QgWqKzk7Iyx9cIbR-3~WblBD-LXv7LwvjLplgi1031lwYz3LaXrjMap24AdqLiiiveZjhhM6hbWrI7oA3o2-UtW4~2UsDY79mXVZ-eNOwCXZVJXmdBkh9LWsupO5GK2ENaIFDF9uTK5QH6urJ4De2rcCV0PVXpY-Z3T7RfZUh2zo0g~n7M6yMuovQQDM8kGTGkeokNDlnKj2kzalGx8GYLQ27TyHwBBQ4jxrN6vYB~44K3katSQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" 
               alt="person holding black and silver dumbbell" 
-            />
+            /> */}
+              <picture>
+                <source 
+                  id='js-image'
+                  media='(min-width: 768px)' 
+                  srcSet={dumbbell}
+                />
+                <img 
+                  id='js-image'
+                  src={dumbbell_m} 
+                  alt="man with dumbbell"
+                />
+              </picture>
           </div>
           <div className={styles.exercise_img}>
               <img 
-                src="https://s3-alpha-sig.figma.com/img/2dde/798b/d12137b836ec5f929eb16b3ae41ffdcc?Expires=1691366400&Signature=iFIp3kSr6ShE-dWg2HCoD4WqirYq7qPpLCUIUFfVzU~1dkm1KCnZWsWvSUTKC-FGfeiJWDAewGZwXi36-ULrSSfNKxEtfvWyGnFR~~dkZVg~ROoL3gQAWhM2loOXHRlSg~N3KRJVT5XxQ55bRb1Ya8IZylYbElbyG3uZfW9ETQUOTHCpzgsUHo~bv6AEyE6t1JIBDtmxTREO81AOoSOU-LxTeqDVa-T5e8k7Qc4BvzdpQsHttG-D2bDSl~CtOdWQ9eSrYnm~MvUGTAjEoIID8AjGyDME~BKQXR4AaDYrkykKCnNxcA-kh-omqMJBeTdPvUY1dwDM19HvKH3PGZCNJQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" 
+                src={exercise}
                 alt="man exercising" 
               />
           </div>
@@ -107,6 +121,6 @@ export default function Membership() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   )
 }

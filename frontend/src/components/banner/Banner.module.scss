@@ -10,7 +10,7 @@
     @include mq(large) {
         padding-bottom: 5.6rem;
     }
-    //padding-top: 4rem;
+
 }
 
 .heading {
@@ -24,7 +24,7 @@
         justify-content: flex-start;
     }
     @include mq(large) {
-        padding-inline: 27.38rem;
+        padding-inline: 25rem;
     }
 
     h1 {

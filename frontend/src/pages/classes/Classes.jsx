@@ -9,7 +9,7 @@ export default function Classes() {
 
 
   return (
-    <>
+    <main>
       <ClassProvider>
         <Banner 
           title='discover the joy of movement'
@@ -26,6 +26,6 @@ export default function Classes() {
           </div>
         </section>
       </ClassProvider>
-    </>
+    </main>
   )
 }

@@ -24,3 +24,10 @@ button {
     cursor: pointer;
 }
 
+.active {
+    transition: all 300ms ease;
+    &:hover, 
+    &:active {
+        background: $color-secondary-purple;
+    }
+}

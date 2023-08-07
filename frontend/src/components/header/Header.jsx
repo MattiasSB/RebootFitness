@@ -12,9 +12,12 @@ export default function Header() {
 
   const navRef = useRef()
 
-  let prevScrollpos = window.scrollY;
 
-  const handleScroll = () => {
+
+  useEffect(() => {
+    let prevScrollpos = window.scrollY;
+
+    const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       if (prevScrollpos > currentScrollPos - 1) {
           if(window.innerWidth > 1024 ) {
@@ -31,9 +34,8 @@ export default function Header() {
       }
 
       prevScrollpos = currentScrollPos;
-  }
+    }
 
-  useEffect(() => {
     window.addEventListener('scroll', handleScroll);
 
     return () => {
@@ -88,7 +90,10 @@ const handleHome = () => {
 }
 
   return (
-    <header style={{ backgroundColor: isHeaderSolid ? 'black' : 'rgba(0, 0, 0, 0.648)' }} ref={navRef}>
+    <header 
+      style={{ backgroundColor: isHeaderSolid ? 'black' : 'rgba(0, 0, 0, 0.648)' }} 
+      ref={navRef}
+    >
       <nav className={styles.header}>
         <div className={styles.linkWrapper}>
           <Link 
