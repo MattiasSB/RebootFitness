@@ -1,10 +1,9 @@
 import styles from './BannerBooking.module.scss'
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import Button from '../../../../components/button';
 
 
 export default function BannerBooking() {
-  const navigate = useNavigate();
   const getInitialState = () => {
     const value = 'book';
     return value;
@@ -16,10 +15,7 @@ export default function BannerBooking() {
     setValue(e.target.value);
       setLocation(e.target.value);
   };
-  const handleNavigation = () => {
-    // Call the navigate function with the desired route
-    navigate(`/booking/${location}`);
-  };
+
   return (
     <section className={styles.banner}>
         <div className={styles.heading}>
@@ -34,12 +30,7 @@ export default function BannerBooking() {
             <option value='surreycentral'>Surrey Central</option>
             <option value='coquitlamcenter'>Coquitlam Center</option>
           </select>
-          <div 
-            className={styles.button}
-            onClick={handleNavigation}
-          >
-            Continue
-          </div>
+          <Button navigateTo={`/booking/${location}`} text='confirm' />
         </div>
      </section>
   )

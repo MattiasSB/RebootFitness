@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 import styles from './Class.module.scss';
 import useClass from '../../../hooks/useClass';
 import ClassFilter from './ClassFilter';

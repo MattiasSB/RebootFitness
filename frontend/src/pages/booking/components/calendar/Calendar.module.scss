@@ -1,1 +1,202 @@
 @use '../../../../styles/abstracts' as *;
+
+.locationClassSelection {
+    @include grid;
+    margin: 7em auto 0 auto;
+    h1 {
+        @include grid-col(1, 4);
+        margin-bottom: 1em;
+        @include mq(medium) {
+            @include grid-col(1, 8);
+        }
+    
+        @include mq(large) {
+            @include grid-col(1, 12);
+        }
+    }
+    @include mq(medium){
+        margin: 9em auto 0 auto;
+        h1 {
+            margin-bottom: 2em;
+        }
+    }
+    
+
+}
+
+.classFilter {
+    @include grid-col(1, 4);
+    @include flex(center, center);
+    margin-bottom: 1em;
+
+    @include mq(medium) {
+        @include grid-col(1, 8);
+        margin-bottom: 2em;
+    }
+
+    @include mq(large) {
+        @include grid-col(1, 12);
+    }
+
+}
+
+.CalendarWrapper {
+    @include grid-col(1, 4);
+    margin-bottom: 1em;
+    width: 100%;
+    @include mq(medium) {
+        @include grid-col(1, 8);
+    }
+
+    @include mq(large) {
+        @include grid-col(1, 12);
+    }
+    @include flex(center, center);
+    margin-top: 1em;
+    svg {
+        color: $color-primary-black;
+        margin-bottom: 2em;
+    }
+    svg:hover {
+        color: $color-secondary-purple;
+        cursor: pointer;
+    }
+    overflow: hidden;
+    @include mq(medium){
+        margin-top: 2em;
+    }
+    @include mq(large){
+        margin-top: 4em;
+    }
+
+    .Calendar {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        max-width: 100%;
+        padding: 0 2em 0em 2em;
+        margin: 0 0em 1em 0em;
+
+        @include mq(medium) {
+           font-size: 1.25em
+        }
+        @include mq(large) {
+            font-size: 1.75em;
+            @include flex(space-between, center);
+            width: 100%;
+        }
+        ul {
+            @include flex(flex-start, center);
+            margin-bottom: 1em;
+            .CalendarBlock {
+                text-align: center;
+                padding: 0.5em 1.1em;
+                white-space: nowrap; /* Prevent line breaks inside list items */
+                flex-shrink: 0;
+                p {
+                    font-size: 0.8em;
+                }
+                h3 {
+                    font-size: 1.2em;
+                }
+            }
+            
+            .CalendarBlock:hover {
+                cursor: pointer;
+            }
+            ul:first-child {
+                margin: 0 0 0.5em 0
+            }
+            ul:last-child {
+                margin: 0 0 0.5em 0em;
+            }
+        }
+    }
+}
+
+.Day {
+    text-transform: uppercase;
+    padding: 0.5em 0 0.5em 0;
+    @include mq(medium){
+        padding: 1em 0 1em 0;
+    }
+}
+
+.click {
+    transition: all 300ms ease;
+    border-bottom: to_rem(5) solid $color-primary-black;
+}
+
+.scheduleWrapper {
+    @include grid-col(1, 4);
+    border: to_rem(2) solid $color-primary-black;
+    @include mq(medium){
+        @include grid-col(1, 8);
+    }
+    @include mq(large){
+        @include grid-col(1, 12);
+    }
+    margin-bottom: 4em;
+    .heading {
+        width: 100%;
+        background: $color-primary-black;
+        color: $color-primary-white;
+        padding: 1em 0;
+        h4 {
+            text-transform: uppercase;
+            margin-left: 1em;
+        }
+    }
+}
+
+.classList {
+    width: 100%;
+    li:last-child {
+        border-bottom: none;
+        margin-bottom: none;
+        padding-bottom: 0;
+    }
+    li {
+        @include flex(center, space-between);
+        width: 95%;
+        margin: 1em auto;
+        margin-bottom: 1.25em;
+        padding: 1em 0;
+        height: 6em;
+        border-bottom: to_rem(3) solid $color-primary-black ;
+        .profileIcons {
+            border-radius: 50%;
+            background: red;
+            height: 3em;
+            min-width: 1em;
+            width: 3em;
+            @include mq(large){
+                font-size: 1.4em
+            }
+        }
+        .leftCol {
+            @include flex(space-between, space-between, column);
+            width: 25%;
+            height: 100%;
+            @include mq(medium){ 
+                @include flex(center, space-between, row);
+            }
+        }
+        .rightCol {
+            @include flex(space-between, space-between, column);
+            width: 75%;
+            height: 100%;
+            h4 {
+                padding-inline: 2em;
+                text-align: center;
+            }
+            a {
+                margin: 0 auto;
+            }
+            @include mq(medium){
+                @include flex(center, space-between, row);
+            }
+        }
+    }
+}
