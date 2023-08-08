@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import BannerBooking from './components/banner-booking/BannerBooking'
 import Calendar from './components/calendar/Calendar';
 import CreateBooking from './components/create-Booking/createBooking';
+import BannerState from '../../components/banner/Banner'
 
 
 export default function Booking() {
@@ -22,6 +23,22 @@ export default function Booking() {
       {view === 'surreycentral' && <Calendar />}
       {view === 'coquitlamcenter' && <Calendar />}
       {showBooking && <CreateBooking />}
+      {view === 'failure' && 
+        <BannerState 
+          title= 'Something Went Wrong!'
+          text ='Something made an oopsie. Please try again to book! *You Must be Logged In*'
+          navigateTo ='/booking/book'
+          linkText='Try Again'
+        />
+      }
+      {view === 'success' && 
+        <BannerState 
+          title= 'BOOKING CONFIRMED'
+          text ='Your booking has been confirmed and your session is reserved. Get ready to sweat, energize, and reboot'
+          navigateTo ='/'
+          linkText='Return Home'
+        />
+      }
     </main>
   )
 }
