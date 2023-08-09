@@ -18,7 +18,6 @@ export default function CreateBooking() {
     const auth = getAuth()
 
     const [validated, setValidated] = useState();
-    const [click, setClick] = useState();
 
     const formatMonthDayString = (input) => {
       const segments = (input || '').split(',').map(segment => segment.trim());
@@ -94,24 +93,7 @@ export default function CreateBooking() {
         setValidated(false);
 
       }
-      
     } 
-    if(user && click){
-      set(ref(database, `/${bookingDate}/${user.uid}`), {
-        location: `${bookingClassLocation}`,
-        classType: `${bookingClassType}`,
-        date: `${bookingDate}`,
-        time: `${bookingClassTime}`
-      })
-    }
-    if(user){
-      set(ref(database, `/${bookingDate}/${user.uid}`), {
-        location: `${bookingClassLocation}`,
-        classType: `${bookingClassType}`,
-        date: `${bookingDate}`,
-        time: `${bookingClassTime}`
-      })
-    }
   return (
     <section className={`wrapper ${styles.BookingDetails}`}>
       <div className={styles.bookingWrapper}>
@@ -158,7 +140,18 @@ export default function CreateBooking() {
           </div>
           <div 
             className={styles.Button}
-            onClick={handleBooking}
+            onLoad={handleBooking}
+            onClick={()=> {
+              if(user){
+                set(ref(database, `/${bookingDate}/${user.uid}`), {
+                  location: `${bookingClassLocation}`,
+                  classType: `${bookingClassType}`,
+                  date: `${bookingDate}`,
+                  time: `${bookingClassTime}`
+                })
+                window.location.href = '/booking/success';
+              }
+            }}
           >
             <Button text='Book' />
           </div>
