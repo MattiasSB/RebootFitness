@@ -19,6 +19,7 @@ export default function CreateBooking() {
 
     const [validated, setValidated] = useState();
 
+
     const formatMonthDayString = (input) => {
       const segments = (input || '').split(',').map(segment => segment.trim());
       if (segments.length >= 3) {
@@ -142,14 +143,21 @@ export default function CreateBooking() {
             className={styles.Button}
             onLoad={handleBooking}
             onClick={()=> {
-              if(user){
+              if(loggedIn){
                 set(ref(database, `/${bookingDate}/${user.uid}`), {
                   location: `${bookingClassLocation}`,
                   classType: `${bookingClassType}`,
                   date: `${bookingDate}`,
                   time: `${bookingClassTime}`
                 })
-                window.location.href = '/booking/success';
+              }
+              else{
+                if(loggedIn){
+                  window.location.href = '/booking/failure';
+                }
+                else if(validated){
+                  window.location.href = '/booking/failure';
+                }
               }
             }}
           >
