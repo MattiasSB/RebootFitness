@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
             setCheckingStatus(false)
         })
 
-    }, [loggedIn])
+    }, [])
 
     return (
         <AuthContext.Provider

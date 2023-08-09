@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { getAuth, updateProfile } from 'firebase/auth'
@@ -7,23 +7,33 @@ import { db } from '../../firebase.config'
 import { Add } from 'iconsax-react'
 
 import styles from './Profile.module.scss'
+import Spinner from '../../components/spinner'
 import useAuth from '../../hooks/useAuth'
 import LayoutAuth from '../../components/layout-auth'
 import BannerAuth from '../../components/banner-auth/BannerAuth'
 
 export default function Profile() {
     const navigate = useNavigate()
-    const { user, setLoggedin } = useAuth()
+    const { user, setLoggedin, loggedIn } = useAuth()
     const auth = getAuth()
 
     const [formData, setFormData] = useState({
-        name: auth.currentUser.displayName,
-        email: auth.currentUser.email,
+        name: '',
+        email: '',
     })
 
     const [isEdited, setIsEdited] = useState(false)
 
     const { name, email } = formData
+
+    useEffect(() => {
+        if (loggedIn && user) {
+            setFormData({
+                name: user.displayName,
+                email: user.email,
+            });
+        }
+    }, [user, loggedIn]);
 
     const onSignOut = async () => {
         await auth.signOut()
@@ -40,15 +50,21 @@ export default function Profile() {
     const onSubmit = async () => {
 
         try {
-            if(auth.currentUser.displayName !== name) {
-                await updateProfile(auth.currentUser, {
+            if(user.displayName !== name) {
+                await updateProfile(user, {
                     displayName: name,
                 })
 
-                const userRef = doc(db, 'users', auth.currentUser.uid )
+                const userRef = doc(db, 'users', user.uid )
                 await updateDoc(userRef, {
                     name,
                 })
+
+                setFormData((prev) => ({
+                    ...prev,
+                    name,
+                }));
+                
             }
         } catch(error) {
             console.log('Could not update profile details')
@@ -61,7 +77,9 @@ export default function Profile() {
             [e.target.id]: e.target.value,
         }))
     }
-
+  if (!loggedIn) {
+    return  <Spinner />
+  } 
   return (
     <>
         <section>
@@ -92,7 +110,7 @@ export default function Profile() {
                             onChange={onUpdate}
                             disabled
                         />
-                        <label htmlFor="email">
+                        {/* <label htmlFor="email">
                             phone number
                         </label>
                         <input 
@@ -102,7 +120,7 @@ export default function Profile() {
                             className={isEdited ? styles.edited : null}
                             onChange={onUpdate}
                             disabled={!isEdited}
-                        />
+                        /> */}
                     </div>
                     <div className={styles.buttonContainer}>
                         <button 
