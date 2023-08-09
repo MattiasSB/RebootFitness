@@ -26,9 +26,17 @@ export default function Booking() {
       {view === 'failure' && 
         <BannerState 
           title= 'Something Went Wrong!'
-          text ='Something made an oopsie. Please try again to book! *You Must be Logged In*'
+          text ='Something made an oopsie. Please try again to book!'
           navigateTo ='/booking/book'
           linkText='Try Again'
+        />
+      }
+      {view === 'failureLoginSignup' && 
+        <BannerState 
+          title= "It Appears You Aren't Signed In!"
+          text ='Please sign in/sign up and try again '
+          navigateTo ='/sign-in'
+          linkText='Sign In'
         />
       }
       {view === 'success' && 

@@ -1,14 +1,21 @@
 import styles from './createBooking.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '../../../../components/button/Button'
 import { useState, useEffect } from 'react';
 import { description, Address } from '../../../../data/booking';
+import useAuth from '../../../../hooks/useAuth';
+import { getAuth } from 'firebase/auth'
+import { db } from '../../../../firebase.config'
 
 export default function CreateBooking() {
     const bookingClassType = localStorage.getItem('RebootClassType');
     const bookingClassTime = localStorage.getItem('RebootTime');
     const bookingDate = localStorage.getItem('RebootDate');
     const bookingClassLocation = localStorage.getItem('RebootLocation');
+
+    const navigate = useNavigate()
+    const { user, loggedIn } = useAuth()
+    const auth = getAuth()
 
     const [validated, setValidated] = useState();
 
@@ -37,10 +44,10 @@ export default function CreateBooking() {
     const selectedAddress = Address.find(desc => desc.name === bookingClassLocation);
 
     useEffect(() => {
-      if (validated === false){
-        window.location.href = '/booking/failure';
+      if (!loggedIn){
+        window.location.href = '/booking/failureLoginSignup';
       } 
-      else if(validated === true){
+      else if(validated === true && loggedIn){
         localStorage.setItem('RebootBooking', `${bookingClassLocation}, ${bookingClassType}, ${bookingDate}, ${bookingClassTime}`);
         const bookingObject = {
           location: `${bookingClassLocation}`,
@@ -51,9 +58,12 @@ export default function CreateBooking() {
         const bookingFireBase = JSON.stringify(bookingObject);
         console.log(bookingFireBase)
       }
+      else if(validated === false){
+        window.location.href = '/booking/failure';
+      }
     })
 
-
+    console.log(user, auth);
     const handleBooking = () => {
       const valuesToCheck = [
         bookingClassLocation, bookingClassTime, bookingClassType, bookingDate
