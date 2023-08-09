@@ -1,11 +1,12 @@
 import styles from './createBooking.module.scss'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Button from '../../../../components/button/Button'
 import { useState, useEffect } from 'react';
 import { description, Address } from '../../../../data/booking';
 import useAuth from '../../../../hooks/useAuth';
 import { getAuth } from 'firebase/auth'
-import { db } from '../../../../firebase.config'
+import { database } from '../../../../firebase.config'
+import { set, ref } from 'firebase/database'
 
 export default function CreateBooking() {
     const bookingClassType = localStorage.getItem('RebootClassType');
@@ -13,11 +14,11 @@ export default function CreateBooking() {
     const bookingDate = localStorage.getItem('RebootDate');
     const bookingClassLocation = localStorage.getItem('RebootLocation');
 
-    const navigate = useNavigate()
-    const { user, loggedIn } = useAuth()
+    const { loggedIn } = useAuth()
     const auth = getAuth()
 
     const [validated, setValidated] = useState();
+    const [click, setClick] = useState();
 
     const formatMonthDayString = (input) => {
       const segments = (input || '').split(',').map(segment => segment.trim());
@@ -28,6 +29,20 @@ export default function CreateBooking() {
       }
       return '';
     };
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          setUser(user);
+        } else {
+          setUser(null);
+        }
+      });
+  
+      return () => unsubscribe();
+    });
 
     const formatDayString = (input) => {
       const segments = (input || '').split(',').map(segment => segment.trim());
@@ -44,27 +59,19 @@ export default function CreateBooking() {
     const selectedAddress = Address.find(desc => desc.name === bookingClassLocation);
 
     useEffect(() => {
-      if (!loggedIn){
+      if (validated === true && !loggedIn){
         window.location.href = '/booking/failureLoginSignup';
       } 
       else if(validated === true && loggedIn){
         localStorage.setItem('RebootBooking', `${bookingClassLocation}, ${bookingClassType}, ${bookingDate}, ${bookingClassTime}`);
-        const bookingObject = {
-          location: `${bookingClassLocation}`,
-          classType: `${bookingClassType}`,
-          date: `${bookingDate}`,
-          time: `${bookingClassTime}`
-        };
-        const bookingFireBase = JSON.stringify(bookingObject);
-        console.log(bookingFireBase)
       }
       else if(validated === false){
         window.location.href = '/booking/failure';
       }
     })
 
-    console.log(user, auth);
     const handleBooking = () => {
+  
       const valuesToCheck = [
         bookingClassLocation, bookingClassTime, bookingClassType, bookingDate
       ]
@@ -88,9 +95,23 @@ export default function CreateBooking() {
 
       }
       
-      
+    } 
+    if(user && click){
+      set(ref(database, `/${bookingDate}/${user.uid}`), {
+        location: `${bookingClassLocation}`,
+        classType: `${bookingClassType}`,
+        date: `${bookingDate}`,
+        time: `${bookingClassTime}`
+      })
     }
-
+    if(user){
+      set(ref(database, `/${bookingDate}/${user.uid}`), {
+        location: `${bookingClassLocation}`,
+        classType: `${bookingClassType}`,
+        date: `${bookingDate}`,
+        time: `${bookingClassTime}`
+      })
+    }
   return (
     <section className={`wrapper ${styles.BookingDetails}`}>
       <div className={styles.bookingWrapper}>
