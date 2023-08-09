@@ -1,2 +1,173 @@
 @use '../../../../styles/abstracts' as *;
 
+.BookingDetails {
+    @include grid;
+    @include mq(medium){
+        font-size: 1.25em;
+    }
+
+    @include mq(large){
+        font-size: 1.4em;
+    }
+}
+.backLink {
+    @include grid-col(1,4);
+    margin-bottom: 6em;
+}
+
+.bookingWrapper {
+    margin: 10em 0 2em 0;
+    padding-bottom: 2em;
+    border: to_rem(3) solid $color-primary-black;
+    .heading {
+        background-color: $color-primary-black;
+        color: $color-primary-white;
+        height: 2.5em;
+        @include flex(center, flex-start);
+        @include grid-col(1, 4); 
+        @include mq(medium){
+            @include grid-col(1, 8); 
+        }
+        @include mq(large){
+            @include grid-col(1, 12)
+        }
+        h2{
+            font-size: 0.8em;
+            padding-left: 1em;
+        }
+    }
+    @include grid;
+    @include grid-col(1, 4); 
+    @include mq(medium){
+        @include grid-col(1, 8); 
+    }
+    @include mq(large){
+        @include grid-col(1, 12)
+    }
+}
+
+.Date {
+    @include grid-col(1, 3);
+    border-bottom: to_rem(3) solid $color-primary-black;
+    margin: 2em 1em;
+    margin-right: 4em;
+    padding-bottom: 3em;
+    @include mq(medium){
+        @include grid-col(1, 4);
+        h1 {
+            font-size: 1.4em;
+        }
+    }
+    @include mq(large){
+        @include grid-col(2, 5);
+        h1 {
+            font-size: 2em;
+        }
+    }
+}
+.profileIcon {
+    @include grid-col(1, 1);
+    height: 3em;
+    width: 3em;
+    background: red;
+    border-radius: 50%;
+    margin: auto 2em;
+    @include mq(medium){ 
+        @include grid-col(1, 3);
+        
+    }
+    @include mq(large){
+        @include grid-col(2, 5);
+        font-size: 1.4em
+    }
+}
+
+.classInfo {
+    @include grid-col(2, 3);
+    @include mq(medium) {
+        @include grid-col(4, 5);
+    }
+    @include mq(large){
+        @include grid-col(7, 5)
+    }
+    h3, h4 {
+        text-transform: uppercase;
+        padding: 0.5em 0;
+    }
+    h3 {
+        font-size: 1.2em;
+        font-weight: 700;
+    }
+}
+
+.expandable {
+    @include grid-col(1, 4);
+    @include grid;
+    margin-top: 4em;
+    @include mq(medium) {
+        @include grid-col(1, 8);
+    }
+    @include mq(large){
+        @include grid-col(2, 11)
+    }
+}
+.expandableTop {
+    @include flex(center, space-between);
+    @include grid-col(1, 4);
+    @include mq(medium) {
+        @include grid-col(1, 8);
+        div {
+            margin-right: 6em;
+        }
+        div:hover {
+            cursor: pointer;
+            color: $color-secondary-purple;
+        }
+        @include mq(large){
+            @include grid-col(1, 11)
+        }
+    }
+    margin: 1em;
+    padding-bottom: 1em;
+    border-bottom: to_rem(3) solid $color-primary-black;
+    div {
+        margin-right: 4em;
+        font-size: 1.5em;
+    }
+}
+.Button {
+    @include grid-col(1, 4);
+    @include mq(medium) {
+        @include grid-col(1, 8);
+    }
+    margin: 0 auto;
+    @include mq(large){
+        @include grid-col(1, 12)
+    }
+}
+
+.dropdown {
+    transition: opacity 300ms ease;
+    @include grid-col(1, 4);
+    margin: 1em;
+    @include mq(medium){
+        @include grid-col(1, 8);
+    }
+    @include mq(large) {
+        @include grid-col(1, 11);
+    }
+    p {
+        margin-bottom: 1em;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    p {
+        margin-bottom: 0;
+    }
+}
