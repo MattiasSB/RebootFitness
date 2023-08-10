@@ -13,6 +13,18 @@ export default function CreateBooking() {
     const bookingDate = localStorage.getItem('RebootDate');
     const bookingClassLocation = localStorage.getItem('RebootLocation');
 
+    const loadedImage = bookingClassLocation.replace(/\s+/g, '');
+
+    const classMapping = {
+      SurreyCentral: styles.SurreyCentral,
+      BurnabyNorthgate: styles.BurnabyNorthgate,
+      DowntownRobson: styles.DowntownRobson,
+      CoquitlamCenter: styles.CoquitlamCenter
+    };
+
+
+    const backgroundImage = classMapping[loadedImage] || styles.defaultClass;
+
     const auth = getAuth();
 
 
@@ -102,7 +114,7 @@ export default function CreateBooking() {
               </span>
             </h1>
           </div>
-          <div className={styles.profileIcon}></div>
+          <div className={`${styles.profileIcon} ${backgroundImage}`}></div>
           <div className={styles.classInfo}>
             <h3>{checkValue(bookingClassType)}</h3>
             <h4>{checkValue(bookingClassTime)}</h4>

@@ -17,6 +17,19 @@ export default function Calendar() {
   //sets the default list to be loaded as the Yoga class
   const [selectedClass, setSelectedClass] = useState('Yoga');
 
+
+  const [loadedImage, setloadedImage] = useState();
+
+  const classMapping = {
+    SurreyCentral: styles.SurreyCentral,
+    BurnabyNorthgate: styles.BurnabyNorthgate,
+    DowntownRobson: styles.DowntownRobson,
+    CoquitlamCenter: styles.CoquitlamCenter
+  };
+
+
+  const backgroundImage = classMapping[loadedImage] || styles.defaultClass;
+
   // Function to calculate the start of the current week based on a given date
   const getCurrentWeekStart = (date) => {
     //date.getDay() retrieves the day of the week from (0 - 6)(Sunday = 0, Saturday = 6 )
@@ -49,24 +62,28 @@ export default function Calendar() {
     return weekDates;
   }
 
-  // Functions to calculate the start of the next week
-  const getNextWeekStart = (date) => {
-    //creates a new date object with the passed in parameter 
-    const nextWeekStart = new Date(date);
-    //adds 7 to the current week start and sets value to variable
-    nextWeekStart.setDate(date.getDate() + 7);
-    //checks to see if the next week is aa different month then the current date
-    if (nextWeekStart.getMonth() !== date.getMonth()) {
-      //if it's a different month add 1 month
-      nextWeekStart.setMonth(date.getMonth() + 1);
-      //if it's a different year (if next month is january(code = 0)) and decrements by 1 to ensure the date stays at correct for the year
-      if (nextWeekStart.getMonth() === 0) {
-        nextWeekStart.setFullYear(nextWeekStart.getFullYear() - 1);
-      }
+// Function to calculate the start of the next week
+const getNextWeekStart = (date) => {
+  // Create a new date object based on the input date
+  const nextWeekStart = new Date(date);
+
+  // Add 7 days to the current week start to get the next week's start
+  nextWeekStart.setDate(date.getDate() + 7);
+
+  // Check if the next week extends into the next month
+  if (nextWeekStart.getMonth() !== date.getMonth()) {
+    // Move to the next month
+    nextWeekStart.setMonth(date.getMonth() + 1);
+
+    // If the next month is January (code = 0), increment the year
+    if (nextWeekStart.getMonth() === 0) {
+      nextWeekStart.setFullYear(nextWeekStart.getFullYear() + 1);
     }
-    //returns the next week's date object
-    return nextWeekStart
   }
+
+  // Return the date representing the start of the next week
+  return nextWeekStart;
+}
 
     // Functions to calculate the previous week with date passed in as a parameter
     const getPrevWeekStart = (date) => {
@@ -115,19 +132,24 @@ export default function Calendar() {
     //if the page is = to route specified set the location in local storage to the formatted route parameter 
     if(view === 'burnabynorthgate') {
       setLocationState('Burnaby Northgate')
-      localStorage.setItem('RebootLocation', location)
+      localStorage.setItem('RebootLocation', location);
+      setloadedImage('BurnabyNorthgate')
+      
     } 
     else if(view === 'downtownrobson') {
       setLocationState('Downtown Robson')
       localStorage.setItem('RebootLocation', location)
+      setloadedImage('DowntownRobson')
     }
     else if(view === 'surreycentral'){
       setLocationState('Surrey Central')
       localStorage.setItem('RebootLocation', location)
+      setloadedImage('SurreyCentral')
     }
     else if(view === 'coquitlamcenter'){
       setLocationState('Coquitlam Center')
       localStorage.setItem('RebootLocation', location)
+      setloadedImage('CoquitlamCenter')
     }
     //monitors a dependency array
   },[setLocationState, view, location, selected, currentMonth, currentYear])
@@ -228,7 +250,7 @@ export default function Calendar() {
                 <h3>{item.time}</h3>
                 <h4>1 Hour</h4>
               </div>
-              <div className={styles.profileIcons}></div>
+              <div className={`${styles.profileIcons} ${backgroundImage} `}></div>
             </div>
             <div className={styles.rightCol}>
               <h4>{`${location} - ${item.category}`}</h4>
