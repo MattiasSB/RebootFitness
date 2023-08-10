@@ -15,7 +15,9 @@ h1, .h1 {
     text-transform: uppercase;
 
         // tablet
-    //@include mq()
+    @include mq(medium) {
+        font-size: 2rem;
+    }
 
     @include mq(large) {
         font-size: 3rem;
@@ -27,6 +29,10 @@ h2, .h2 {
     font-family: $font-lato;
     font-size: 1.1875rem;
     text-transform: uppercase;
+
+    @include mq(medium) {
+        font-size: 1.55rem;
+    }
 
     @include mq(large) {
         font-size: 2.5rem;

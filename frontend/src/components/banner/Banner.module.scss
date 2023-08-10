@@ -11,7 +11,7 @@
         padding-bottom: 5.6rem;
     }
 
-}
+}  
 
 .heading {
     padding-inline: 1.875rem;
@@ -40,6 +40,10 @@
         font-weight: 300;
         line-height: 142.857%;
         padding-inline: 0.5rem;
+
+        @include mq(medium) {
+            font-size: 1rem;
+        }
     }
 
     a {
