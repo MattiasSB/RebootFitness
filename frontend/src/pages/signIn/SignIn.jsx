@@ -91,7 +91,7 @@ export default function SignUp() {
                 <p>Wrong Email or Password. Try again.</p>
               </div>
               <Link
-                to="/forgot-password"
+                to="/"
                 className={styles.forgotPassword}
               >
                 Forgot password?

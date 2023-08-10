@@ -66,8 +66,8 @@
 
     @include mq(large) {
         grid-area: 2 / 6 / span 3 / span 6;
-        align-self: center;
-        padding: 3.75rem 6.88rem 3.75rem;
+        align-self: flex-start;
+        padding: 3.75rem 5.88rem 3.75rem;
     }
     
     h2 {

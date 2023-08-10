@@ -4,12 +4,15 @@ import { useNavigate } from 'react-router-dom'
 import { getAuth, updateProfile } from 'firebase/auth'
 import { updateDoc, doc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
+import { Add, Minus } from 'iconsax-react';
+import { getDatabase, ref, onValue } from "firebase/database";
+
 import styles from './Profile.module.scss'
 import Spinner from '../../components/spinner'
 import useAuth from '../../hooks/useAuth'
 import LayoutAuth from '../../components/layout-auth'
 import BannerAuth from '../../components/banner-auth/BannerAuth'
-import { getDatabase, ref, onValue } from "firebase/database";
+
 
 export default function Profile() {
     const navigate = useNavigate()
@@ -142,17 +145,6 @@ export default function Profile() {
                             onChange={onUpdate}
                             disabled
                         />
-                        {/* <label htmlFor="email">
-                            phone number
-                        </label>
-                        <input 
-                            type="text" 
-                            id='phoneNumber'
-                            value={email}
-                            className={isEdited ? styles.edited : null}
-                            onChange={onUpdate}
-                            disabled={!isEdited}
-                        /> */}
                     </div>
                     <div className={styles.buttonContainer}>
                         <button 
@@ -163,9 +155,17 @@ export default function Profile() {
                         </button>
                     </div>
                     <div className={styles.expandable}>
-                        <div className={styles.expandableTop}>
+                        <div onClick={toggleDropdown} className={styles.expandableTop}>
                             <h4>Booking History</h4>
-                            <div onClick={toggleDropdown}>{isPlus ? '+' : '-'}</div>
+                            <div >{isPlus ? 
+                            <Add
+                            size= {window.innerWidth >= 1040 ? "25" : "20"}
+                            color="#000000"/>  : 
+                            <Minus
+                                size= {window.innerWidth >= 1040 ? "25" : "20"}
+                                color="#000000"
+                            />}
+                        </div>
                         </div>
                         <div className={`${styles.dropdown} ${isPlus ? styles.hidden : ''}`}>
                             <ul>
