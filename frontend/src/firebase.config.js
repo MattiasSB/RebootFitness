@@ -11,19 +11,19 @@ import {getDatabase} from 'firebase/database'
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyBTS6bDyGDz4MoeXUDUiF-VDURGLBjNWEM",
+  apiKey: process.env.REACT_APP_API_KEY,
 
-  authDomain: "reboot-fitness-db8a4.firebaseapp.com",
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
 
-  projectId: "reboot-fitness-db8a4",
+  projectId: process.env.REACT_APP_PROJECT_ID,
 
-  storageBucket: "reboot-fitness-db8a4.appspot.com",
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
 
-  messagingSenderId: "1068298833323",
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 
-  appId: "1:1068298833323:web:d1911d1b1379f5f076d6ee",
+  appId: process.env.REACT_APP_APP_ID,
 
-  databaseURL: "https://reboot-fitness-db8a4-default-rtdb.firebaseio.com"
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
 
 };
 
