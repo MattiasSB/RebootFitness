@@ -1,5 +1,5 @@
 import styles from './createBooking.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '../../../../components/button/Button'
 import { useState, useEffect } from 'react';
 import { description, Address } from '../../../../data/booking';
@@ -8,6 +8,7 @@ import { database } from '../../../../firebase.config'
 import { set, ref } from 'firebase/database'
 
 export default function CreateBooking() {
+    const navigate = useNavigate()
     const bookingClassType = localStorage.getItem('RebootClassType');
     const bookingClassTime = localStorage.getItem('RebootTime');
     const bookingDate = localStorage.getItem('RebootDate');
@@ -46,7 +47,7 @@ export default function CreateBooking() {
           setUser(user);
         } else {
           setUser(null);
-          window.location.href = '/booking/failureLoginSignup';
+          navigate('/booking/failureLoginSignup')
         }
       });
   
@@ -74,7 +75,7 @@ export default function CreateBooking() {
 
     function checkValue(value) {
       if (value === ' ' || value === undefined || value === null) {
-        window.location.href = '/booking/failure';
+        navigate('/booking/failure')
       } else {
         return value;
       }
@@ -92,7 +93,7 @@ export default function CreateBooking() {
     };
   
     const secondFunction = async () => {
-      window.location.href = '/booking/success';
+      navigate('/booking/success')
     };
   
     const handleClick = async () => {
