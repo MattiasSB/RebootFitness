@@ -33,7 +33,7 @@ export function useGsapImageAnim(selector) {
         ctx.revert();
       };
     });
-  }, []);
+  });
 
   return imageRef;
 }

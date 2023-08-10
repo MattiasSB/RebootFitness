@@ -1,4 +1,4 @@
-import { Hierarchy } from 'iconsax-react'
+
 import spinner from '../../assets/images/spinner.gif'
 
 export default function Spinner() {
