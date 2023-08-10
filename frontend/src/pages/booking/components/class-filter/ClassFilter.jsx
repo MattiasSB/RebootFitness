@@ -11,6 +11,7 @@ export default function ClassFilter({ filter, onActiveChange }) {
     if (storedValue && active !== storedValue) {
       localStorage.setItem('RebootClassType', active);
     }
+    localStorage.setItem('RebootClassType', active);
   }, [active, storedValue]); // Run this effect only when `active` changes
 
   const handleClick = (item) => {
