@@ -3,10 +3,10 @@
 .banner {
     background: $color-primary-black;
     color: $color-primary-white;
-    height: 70vh;
+    height: 100vh;
     padding-bottom: 10vh;
     overflow-x: hidden;
-    @include flex(flex-end, center);
+    @include flex(center, center);
 
     @include mq(large) {
         padding-bottom: 5.6rem;
