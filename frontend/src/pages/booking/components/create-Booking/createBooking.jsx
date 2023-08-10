@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import Button from '../../../../components/button/Button'
 import { useState, useEffect } from 'react';
 import { description, Address } from '../../../../data/booking';
-import useAuth from '../../../../hooks/useAuth';
 import { getAuth } from 'firebase/auth'
 import { database } from '../../../../firebase.config'
 import { set, ref } from 'firebase/database'
@@ -14,10 +13,7 @@ export default function CreateBooking() {
     const bookingDate = localStorage.getItem('RebootDate');
     const bookingClassLocation = localStorage.getItem('RebootLocation');
 
-    const { loggedIn } = useAuth()
-    const auth = getAuth()
-
-    const [validated, setValidated] = useState();
+    const auth = getAuth();
 
 
     const formatMonthDayString = (input) => {
@@ -38,6 +34,7 @@ export default function CreateBooking() {
           setUser(user);
         } else {
           setUser(null);
+          window.location.href = '/booking/failureLoginSignup';
         }
       });
   
@@ -58,43 +55,38 @@ export default function CreateBooking() {
 
     const selectedAddress = Address.find(desc => desc.name === bookingClassLocation);
 
-    useEffect(() => {
-      if (validated === true && !loggedIn){
-        window.location.href = '/booking/failureLoginSignup';
-      } 
-      else if(validated === true && loggedIn){
-        localStorage.setItem('RebootBooking', `${bookingClassLocation}, ${bookingClassType}, ${bookingDate}, ${bookingClassTime}`);
-      }
-      else if(validated === false){
+    const tempDateMonth = formatMonthDayString(bookingDate);
+
+    const tempDateDay = formatDayString(bookingDate);
+    
+
+    function checkValue(value) {
+      if (value === ' ' || value === undefined || value === null) {
         window.location.href = '/booking/failure';
-      }
-    })
-
-    const handleBooking = () => {
-  
-      const valuesToCheck = [
-        bookingClassLocation, bookingClassTime, bookingClassType, bookingDate
-      ]
-
-      let allValid = true;
-
-      valuesToCheck.forEach((value) => {
-        if (value === '' || value === null || value === undefined) {
-          console.log(`${value} is empty, null, or undefined.`);
-          allValid = false;
-          return
-        }
-      });
-
-      if (allValid === true) {
-        console.log('success');
-        setValidated(true); // Set the validated state to true here if needed
-        window.location.href = '/booking/success';
       } else {
-        setValidated(false);
-
+        return value;
       }
-    } 
+    }
+
+    const firstFunction = async () => {
+      await set(ref(database, `/${user.uid}/${bookingDate}`), {
+        booking: `${user.uid}`,
+        location: `${bookingClassLocation}`,
+        classType: `${bookingClassType}`,
+        date: `${bookingDate}`,
+        time: `${bookingClassTime}`
+      })
+      secondFunction();
+    };
+  
+    const secondFunction = async () => {
+      window.location.href = '/booking/success';
+    };
+  
+    const handleClick = async () => {
+      firstFunction();
+    };
+
   return (
     <section className={`wrapper ${styles.BookingDetails}`}>
       <div className={styles.bookingWrapper}>
@@ -103,18 +95,18 @@ export default function CreateBooking() {
           </div>
           <div className={styles.Date}>
             <h1>
-              {formatMonthDayString(bookingDate)} 
+              {checkValue(tempDateMonth)} 
               <br/>
               <span className={styles.dayTrip}> 
-                {formatDayString(bookingDate)}
+                {checkValue(tempDateDay)}
               </span>
             </h1>
           </div>
           <div className={styles.profileIcon}></div>
           <div className={styles.classInfo}>
-            <h3>{bookingClassType}</h3>
-            <h4>{bookingClassTime}</h4>
-            <h4>{bookingClassLocation}</h4>
+            <h3>{checkValue(bookingClassType)}</h3>
+            <h4>{checkValue(bookingClassTime)}</h4>
+            <h4>{checkValue(bookingClassLocation)}</h4>
           </div>
           <div className={styles.expandable}>
             <div className={styles.expandableTop}>
@@ -141,25 +133,7 @@ export default function CreateBooking() {
           </div>
           <div 
             className={styles.Button}
-            onLoad={handleBooking}
-            onClick={()=> {
-              if(loggedIn){
-                set(ref(database, `/${bookingDate}/${user.uid}`), {
-                  location: `${bookingClassLocation}`,
-                  classType: `${bookingClassType}`,
-                  date: `${bookingDate}`,
-                  time: `${bookingClassTime}`
-                })
-              }
-              else{
-                if(loggedIn){
-                  window.location.href = '/booking/failure';
-                }
-                else if(validated){
-                  window.location.href = '/booking/failure';
-                }
-              }
-            }}
+            onClick={handleClick}
           >
             <Button text='Book' />
           </div>
