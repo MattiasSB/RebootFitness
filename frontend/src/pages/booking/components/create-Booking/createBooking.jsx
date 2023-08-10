@@ -1,11 +1,11 @@
 import styles from './createBooking.module.scss'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Button from '../../../../components/button/Button'
 import { useState, useEffect } from 'react';
 import { description, Address } from '../../../../data/booking';
-import useAuth from '../../../../hooks/useAuth';
 import { getAuth } from 'firebase/auth'
-import { db } from '../../../../firebase.config'
+import { database } from '../../../../firebase.config'
+import { set, ref } from 'firebase/database'
 
 export default function CreateBooking() {
     const bookingClassType = localStorage.getItem('RebootClassType');
@@ -13,11 +13,20 @@ export default function CreateBooking() {
     const bookingDate = localStorage.getItem('RebootDate');
     const bookingClassLocation = localStorage.getItem('RebootLocation');
 
-    const navigate = useNavigate()
-    const { user, loggedIn } = useAuth()
-    const auth = getAuth()
+    const loadedImage = bookingClassLocation.replace(/\s+/g, '');
 
-    const [validated, setValidated] = useState();
+    const classMapping = {
+      SurreyCentral: styles.SurreyCentral,
+      BurnabyNorthgate: styles.BurnabyNorthgate,
+      DowntownRobson: styles.DowntownRobson,
+      CoquitlamCenter: styles.CoquitlamCenter
+    };
+
+
+    const backgroundImage = classMapping[loadedImage] || styles.defaultClass;
+
+    const auth = getAuth();
+
 
     const formatMonthDayString = (input) => {
       const segments = (input || '').split(',').map(segment => segment.trim());
@@ -28,6 +37,21 @@ export default function CreateBooking() {
       }
       return '';
     };
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          setUser(user);
+        } else {
+          setUser(null);
+          window.location.href = '/booking/failureLoginSignup';
+        }
+      });
+  
+      return () => unsubscribe();
+    });
 
     const formatDayString = (input) => {
       const segments = (input || '').split(',').map(segment => segment.trim());
@@ -43,53 +67,37 @@ export default function CreateBooking() {
 
     const selectedAddress = Address.find(desc => desc.name === bookingClassLocation);
 
-    useEffect(() => {
-      if (!loggedIn){
-        window.location.href = '/booking/failureLoginSignup';
-      } 
-      else if(validated === true && loggedIn){
-        localStorage.setItem('RebootBooking', `${bookingClassLocation}, ${bookingClassType}, ${bookingDate}, ${bookingClassTime}`);
-        const bookingObject = {
-          location: `${bookingClassLocation}`,
-          classType: `${bookingClassType}`,
-          date: `${bookingDate}`,
-          time: `${bookingClassTime}`
-        };
-        const bookingFireBase = JSON.stringify(bookingObject);
-        console.log(bookingFireBase)
-      }
-      else if(validated === false){
+    const tempDateMonth = formatMonthDayString(bookingDate);
+
+    const tempDateDay = formatDayString(bookingDate);
+    
+
+    function checkValue(value) {
+      if (value === ' ' || value === undefined || value === null) {
         window.location.href = '/booking/failure';
-      }
-    })
-
-    console.log(user, auth);
-    const handleBooking = () => {
-      const valuesToCheck = [
-        bookingClassLocation, bookingClassTime, bookingClassType, bookingDate
-      ]
-
-      let allValid = true;
-
-      valuesToCheck.forEach((value) => {
-        if (value === '' || value === null || value === undefined) {
-          console.log(`${value} is empty, null, or undefined.`);
-          allValid = false;
-          return
-        }
-      });
-
-      if (allValid === true) {
-        console.log('success');
-        setValidated(true); // Set the validated state to true here if needed
-        window.location.href = '/booking/success';
       } else {
-        setValidated(false);
-
+        return value;
       }
-      
-      
     }
+
+    const firstFunction = async () => {
+      await set(ref(database, `/${user.uid}/${bookingDate}`), {
+        booking: `${user.uid}`,
+        location: `${bookingClassLocation}`,
+        classType: `${bookingClassType}`,
+        date: `${bookingDate}`,
+        time: `${bookingClassTime}`
+      })
+      secondFunction();
+    };
+  
+    const secondFunction = async () => {
+      window.location.href = '/booking/success';
+    };
+  
+    const handleClick = async () => {
+      firstFunction();
+    };
 
   return (
     <section className={`wrapper ${styles.BookingDetails}`}>
@@ -99,18 +107,18 @@ export default function CreateBooking() {
           </div>
           <div className={styles.Date}>
             <h1>
-              {formatMonthDayString(bookingDate)} 
+              {checkValue(tempDateMonth)} 
               <br/>
               <span className={styles.dayTrip}> 
-                {formatDayString(bookingDate)}
+                {checkValue(tempDateDay)}
               </span>
             </h1>
           </div>
-          <div className={styles.profileIcon}></div>
+          <div className={`${styles.profileIcon} ${backgroundImage}`}></div>
           <div className={styles.classInfo}>
-            <h3>{bookingClassType}</h3>
-            <h4>{bookingClassTime}</h4>
-            <h4>{bookingClassLocation}</h4>
+            <h3>{checkValue(bookingClassType)}</h3>
+            <h4>{checkValue(bookingClassTime)}</h4>
+            <h4>{checkValue(bookingClassLocation)}</h4>
           </div>
           <div className={styles.expandable}>
             <div className={styles.expandableTop}>
@@ -137,7 +145,7 @@ export default function CreateBooking() {
           </div>
           <div 
             className={styles.Button}
-            onClick={handleBooking}
+            onClick={handleClick}
           >
             <Button text='Book' />
           </div>
