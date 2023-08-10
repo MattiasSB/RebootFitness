@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { getAuth, updateProfile } from 'firebase/auth'
 import { updateDoc, doc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
-import { Add } from 'iconsax-react'
+import { Add, Minus } from 'iconsax-react';
+import { getDatabase, ref, onValue } from "firebase/database";
 
 import styles from './Profile.module.scss'
 import Spinner from '../../components/spinner'
@@ -12,10 +13,12 @@ import useAuth from '../../hooks/useAuth'
 import LayoutAuth from '../../components/layout-auth'
 import BannerAuth from '../../components/banner-auth/BannerAuth'
 
+
 export default function Profile() {
     const navigate = useNavigate()
     const { user, setLoggedin, loggedIn } = useAuth()
     const auth = getAuth()
+    const [isPlus, setIsPlus] = useState(true);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -25,6 +28,34 @@ export default function Profile() {
     const [isEdited, setIsEdited] = useState(false)
 
     const { name, email } = formData
+
+    const [bookings, setBookings] = useState([]);
+      
+    useEffect(() => {
+        if (user) {
+        const db = getDatabase();
+        const userBookingsRef = ref(db, user.uid);
+    
+        // Attach a listener to the reference
+        const unsubscribe = onValue(userBookingsRef, (snapshot) => {
+            const bookingData = snapshot.val();
+            if (bookingData) {
+            const bookingsArray = Object.entries(bookingData).map(([bookingKey, bookingInfo]) => ({
+                id: bookingKey,
+                ...bookingInfo,
+            }));
+            setBookings(bookingsArray);
+            } else {
+            setBookings([]);
+            }
+        });
+    
+        // Clean up the listener when the component unmounts
+        return () => {
+            unsubscribe();
+        };
+        }
+    }, [user]);
 
     useEffect(() => {
         if (loggedIn && user) {
@@ -80,6 +111,10 @@ export default function Profile() {
   if (!loggedIn) {
     return  <Spinner />
   } 
+    const toggleDropdown = () => {
+      setIsPlus(!isPlus);
+    }
+
   return (
     <>
         <section>
@@ -110,17 +145,6 @@ export default function Profile() {
                             onChange={onUpdate}
                             disabled
                         />
-                        {/* <label htmlFor="email">
-                            phone number
-                        </label>
-                        <input 
-                            type="text" 
-                            id='phoneNumber'
-                            value={email}
-                            className={isEdited ? styles.edited : null}
-                            onChange={onUpdate}
-                            disabled={!isEdited}
-                        /> */}
                     </div>
                     <div className={styles.buttonContainer}>
                         <button 
@@ -130,13 +154,35 @@ export default function Profile() {
                             {isEdited ? 'Save' : 'Update Profile'}
                         </button>
                     </div>
-                    <div className={styles.bookingHistory}>
-                        <h3>booking history</h3>
-                        <Add
-                            size="17"
-                            color="#000000"
-                        />
-                        {/* booking history */}
+                    <div className={styles.expandable}>
+                        <div onClick={toggleDropdown} className={styles.expandableTop}>
+                            <h4>Booking History</h4>
+                            <div >{isPlus ? 
+                            <Add
+                            size= {window.innerWidth >= 1040 ? "25" : "20"}
+                            color="#000000"/>  : 
+                            <Minus
+                                size= {window.innerWidth >= 1040 ? "25" : "20"}
+                                color="#000000"
+                            />}
+                        </div>
+                        </div>
+                        <div className={`${styles.dropdown} ${isPlus ? styles.hidden : ''}`}>
+                            <ul>
+                                {bookings.map((booking) => (
+                                    <li key={booking.id}>
+                                        <div>
+                                            <p><span>Date:</span><br/> {booking.date} </p>
+                                            <p><span>Class:</span><br/>  {booking.classType}</p>
+                                        </div>
+                                        <div>
+                                            <p><span>location</span>:<br/>  {booking.location}</p>
+                                            <p><span>time:</span><br/>  {booking.time}</p>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </form>
                 <button

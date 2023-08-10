@@ -167,10 +167,11 @@
         border-bottom: to_rem(3) solid $color-primary-black ;
         .profileIcons {
             border-radius: 50%;
-            background: red;
             height: 3em;
             min-width: 1em;
             width: 3em;
+            background-position: center;
+            object-fit: cover;
             @include mq(large){
                 font-size: 1.4em
             }
@@ -199,4 +200,22 @@
             }
         }
     }
+}
+
+.SurreyCentral {
+    background-image: url('../../../../assets/images/gym_surrey.jpeg');
+}
+
+.BurnabyNorthgate {
+    background-image: url('../../../../assets/images/gym_burnaby.jpeg');
+}
+
+
+.DowntownRobson {
+    background-image: url('../../../../assets/images/gym_Vancouver.jpeg');
+}
+
+
+.CoquitlamCenter {
+    background-image: url('../../../../assets/images/gym_coquitlam.jpeg');
 }

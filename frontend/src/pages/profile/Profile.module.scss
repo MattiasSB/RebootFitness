@@ -24,7 +24,7 @@
         font-size: 0.75rem;
         font-weight: 400;
         line-height: 2.375rem; /* 316.667% */
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.5rem;
 
         &::placeholder {
             font-family: $font-lato;
@@ -72,7 +72,7 @@
     padding: 0.75rem 0.625rem;
 
     @include mq(large) {
-        
+        margin-top: 1rem;
         p {
             font-family: $font-lato;
             font-size: 0.875rem;
@@ -89,3 +89,91 @@
     }
 }
 
+
+.expandable {
+    @include grid-col(1, 4);
+    @include grid;
+    @include mq(medium) {
+        @include grid-col(1, 8);
+    }
+    @include mq(large){
+        @include grid-col(2, 11)
+    }
+    cursor: pointer;
+}
+.expandableTop {
+    @include flex(center, space-between);
+    @include grid-col(1, 4);
+    @include mq(medium) {
+        @include grid-col(1, 8);
+        div:hover {
+
+            color: $color-secondary-purple;
+        }
+        @include mq(large){
+            @include grid-col(1, 12)
+        }
+    }
+    margin-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: to_rem(2) solid $color-primary-black;
+    div {
+        font-size: 1.5rem;
+    }
+    h4 {
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.dropdown {
+    @include grid-col(1, 4);
+    @include mq(medium) {
+        @include grid-col(1, 8);
+    }
+    @include mq(large){
+        @include grid-col(1, 12)
+    }
+    margin: 1em 1em 1em 1em;
+    ul {
+       @include flex(center, flex-start, column);
+       width: 100%;
+       max-height: 10em;
+       overflow: hidden;
+       overflow-y: scroll;
+       flex-wrap: nowrap;
+       li {
+        @include flex(center, space-between);
+        max-width: 95%;
+        width: 100%;
+        border-bottom: to_rem(2) solid $color-primary-black;
+        padding: 1em;
+        h3, h4 {
+            padding: 1em;
+        }
+
+       }
+       li:first-child {
+            padding: 0 1em 1em 1em;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        span {
+            font-weight: 700;
+        }
+    }
+}

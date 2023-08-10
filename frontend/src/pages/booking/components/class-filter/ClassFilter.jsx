@@ -5,12 +5,13 @@ import styles from './ClassFilter.module.scss';
 export default function ClassFilter({ filter, onActiveChange }) {
   const storedValue = localStorage.getItem('RebootClassType');
   const classNames = ['Yoga', 'Pilates', 'Cycle'];
-  const [active, setActive] = useState(storedValue || 'Yoga'); // Set the initial state from local storage or 'Yoga'
+  const [active, setActive] = useState('Yoga'); // Set the initial state from local storage or 'Yoga'
 
   useEffect(() => {
     if (storedValue && active !== storedValue) {
       localStorage.setItem('RebootClassType', active);
     }
+    localStorage.setItem('RebootClassType', active);
   }, [active, storedValue]); // Run this effect only when `active` changes
 
   const handleClick = (item) => {
