@@ -66,6 +66,12 @@
     min-height: 22.813rem;
     padding: 0 2.16rem;
     margin-bottom: 1rem;
+
+    a {
+        @include mq(large) {
+            margin-top: 0;
+        }
+    }
     @include grid-col(auto ,4);
 
     @include mq(medium) {
@@ -73,7 +79,7 @@
     }
 
     @include mq(large) {
-        min-height: 31.496rem;
+        min-height: 33.496rem;
     }
 
     .content {
@@ -84,7 +90,7 @@
         }
 
         @include mq(large) {
-            min-height: 21.5rem;
+            min-height: 27rem;
         }
     }
 

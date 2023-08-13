@@ -1,10 +1,14 @@
 import { useState } from 'react'
+
 import styles from './Class.module.scss';
 import useClass from '../../../hooks/useClass';
+import { useGsapImageAnim } from '../../../lib/gsap/useGsapImageAnim';
 import ClassFilter from './ClassFilter';
 import Accordion from './Accordion';
 
 export default function Class() {
+
+    const imageRef = useGsapImageAnim('#js-image');
 
     const { classes } = useClass()
 
@@ -25,9 +29,16 @@ export default function Class() {
                 filter={(isClicked) => setIsClicked(isClicked)}
             />
         </div>
-        <div className={styles.classList}>
+        <div 
+            className={styles.classList}
+            ref={imageRef}
+        >
             <h2>{name}</h2>
-            <img src={src} alt={`${name}`} />
+            <img 
+                src={src} 
+                alt={name} 
+                id='js-image'
+            />
             <div className={styles.classItems}>
             {type.map((item, index) => (
                <Accordion 

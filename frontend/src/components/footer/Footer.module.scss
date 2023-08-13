@@ -80,6 +80,16 @@ footer{
                 font-size: 1.75em;
             }
             padding-bottom: 1.3em;
+
+            li:not(:last-child) {
+                padding-right: 0.625rem;
+                &::after {
+                    content: "|";
+                    color: $color-primary-white;
+                    font-size: 1rem;
+                    padding-left: 0.625rem;
+                }
+            }
         }
         .logo{
             font-family: $font_logo;
@@ -98,6 +108,13 @@ footer{
             align-self: flex-start;
             padding: 0.6em 0 1em 0;
             margin: 0 auto;
+
+            a {
+                &:hover {
+                    color: $color-primary-white;
+                }
+            }
+  
             
         }
     

@@ -105,12 +105,12 @@ export default function Footer() {
         <ul className={styles.horizontalLinkList}>
             <li>
               <Link to='/'>
-                Terms and Conditions | 
+                Terms and Conditions  
               </Link>
             </li>
             <li>
               <Link to='/'>
-                 Privacy Policy | 
+                 Privacy Policy 
               </Link>
             </li>
             <li>

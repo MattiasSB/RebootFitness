@@ -58,7 +58,10 @@ const handleMenuToggle = () => {
     } else {
       // Remove the class to enable scrolling when the menu is closed
       document.body.style.overflow = "initial"
-      setHeaderSolid(false); 
+      setTimeout(() => {
+        setHeaderSolid(false); 
+      }, 200)
+
       // Set header background to default state when menu is closed
     }
     return !prevMenuState;

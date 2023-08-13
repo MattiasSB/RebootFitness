@@ -20,11 +20,8 @@
     height: 55%;
 
     @include mq(medium) {
-        padding-inline: 5.875rem;
+        max-width: 38.9375rem;
         justify-content: flex-start;
-    }
-    @include mq(large) {
-        padding-inline: 25rem;
     }
 
     h1 {

@@ -30,9 +30,18 @@ export const LocationsText = [
         heading2: 'Downtown',
         heading3: 'Burnaby',
         description: 'Ready to crush your fitness goals? Our gyms are conveniently located near you, offering state-of-the-art facilities and expert trainers. Book your session now ',
-        description2: '555 Seymour St Vancouver, BC V6B 3H6 +1 (234) 567 8888',
-        description3: '3700 Willingdon Ave Burnaby, BC V5G 3H2 +1 (234) 567 8999'
-
+        description2: [
+            '555 Seymour St',
+            'Vancouver, BC',
+            'V6B 3H6',
+            '+1 (234) 567 8888'
+        ],
+        description3: [
+            '3700 Willingdon Ave',
+            'Burnaby, BC',
+            'V5G 3H2',
+            '+1 (234) 567 8999'
+        ]
     }
 ]
 

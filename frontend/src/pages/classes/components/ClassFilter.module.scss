@@ -25,10 +25,9 @@
     }
 
     @include mq(large) {
-      width: 30%;
       font-size: 1.125rem;
       font-weight: 500;
-      width: 12.5rem;
+      max-width: 12.5rem;
       border-radius: 2.6875rem;
       height: 2.875rem;
       border: to_rem(2) solid $color-primary-black;

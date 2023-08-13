@@ -17,14 +17,14 @@
     padding-inline: 1.875rem;
     text-align: center;
     @include flex(center, flex-start, column);
-    height: 55%;
+    min-height: 55%;
 
     @include mq(medium) {
-        padding-inline: 5.875rem;
+        max-width: 26rem;
         justify-content: flex-start;
     }
     @include mq(large) {
-        padding-inline: 27.38rem;
+        max-width: 38.9375rem;
     }
 
     h1 {

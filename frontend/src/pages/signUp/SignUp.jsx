@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -16,6 +16,8 @@ import ButtonAuth from '../../components/button-auth'
 
 export default function SignUp() {
   const navigate = useNavigate()
+  const [signUpError, setSignUpError] = useState(false)
+  const [emailError, setEmailError] = useState(false)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -25,18 +27,36 @@ export default function SignUp() {
 
   const { name, email, password } = formData
 
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value,
-    }))
-  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const onChange = (e) => {
+
+      if (e.target.id === 'password') {
+        setSignUpError(e.target.value.length < 5);
+      } else if (e.target.id === 'email') {
+        const isValidEmail = emailRegex.test(e.target.value);
+        setEmailError(!isValidEmail);
+  
+        if (!isValidEmail) {
+          setTimeout(() => {
+            setEmailError(false);
+          }, 10000);
+        }
+      }
+
+      setFormData((prevState) => ({
+        ...prevState,
+        [e.target.id]: e.target.value,
+      }))
+    }
 
   const onSubmit = async (e) => {
     e.preventDefault()
  
     try {
       const auth = getAuth()
+
+
 
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
 
@@ -60,6 +80,12 @@ export default function SignUp() {
 
     } catch (error) {
         console.log(error)
+
+        setEmailError(true)
+
+        setTimeout(() => {
+          setEmailError(false)
+        }, 5000)
     }
   }
 
@@ -81,10 +107,13 @@ export default function SignUp() {
             />
             <input 
               type="email"
-              placeholder="email or phone number*"  
+              placeholder="email"  
               id="email"
               value={email}
               onChange={onChange}
+              style={{
+                borderBottom: `1.2px solid ${emailError ? '#f14343' : '#000000'}`
+              }}
             />
             <input 
               type="password"
@@ -92,7 +121,22 @@ export default function SignUp() {
               id="password"
               value={password}
               onChange={onChange}
+              style={{
+                borderBottom: `1.2px solid ${signUpError ? '#f14343' : '#000000'}`
+              }}
             />
+            <div className={styles.error}> 
+              <div 
+                className={styles.wrongPassword}
+                style={{
+                  opacity: signUpError || emailError ? 1 : 0
+                }}  
+              >
+                <div>!</div>
+                <p>{emailError ? 'Please enter a valid email' : 'Password should be at least 6 characters'}</p>
+              </div>
+            </div>
+
             <ButtonAuth />
           </form>
         </LayoutAuth>

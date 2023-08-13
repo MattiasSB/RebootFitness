@@ -21,9 +21,13 @@
     height: 55%;
     width: 45vw;
     max-width: to_rem(500);
-    @include mq(large) {
-        padding-inline: 27.38rem;
+
+    @include mq(medium) {
+        max-width: 38.9375rem;
     }
+    // @include mq(large) {
+    //     padding-inline: 27.38rem;
+    // }
 
     h1 {
         margin-bottom: 1.12rem;

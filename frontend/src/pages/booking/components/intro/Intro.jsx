@@ -1,11 +1,16 @@
 import styles from './Intro.module.scss'
 import { Services, Classes, LocationsImg, LocationsText } from '../../../../data/booking'
 import Button from '../../../../components/button'
+import { useGsapImageAnim } from '../../../../lib/gsap/useGsapImageAnim';
 import stylesBooking from '../../Booking.module.scss'
 
 export default function Intro() {
+  const imageRef = useGsapImageAnim('#js-image');
   return (
-    <div className={`wrapper ${stylesBooking.content}`}>
+    <div 
+      className={`wrapper ${stylesBooking.content}`}
+      ref={imageRef}
+    >
       {Services.map((item, index) => (
         <section className={styles.services} key={index}>
             <div className={styles.servicesHeading}>
@@ -14,8 +19,16 @@ export default function Intro() {
             </div>
             <div className={`${styles.image} ${styles.service}}`}>
               <picture>
-                  <source media='(min-width: 380px)' srcSet={item.src}/>
-                  <img src={item.src_m} alt={item.heading} />
+                  <source 
+                    media='(min-width: 380px)' 
+                    srcSet={item.src}
+                    id='js-image'
+                  />
+                  <img 
+                    src={item.src_m} 
+                    alt={item.heading} 
+                    id='js-image'
+                  />
               </picture>
             </div>
         </section>
@@ -36,20 +49,44 @@ export default function Intro() {
         <section key={index} className={styles.services}>
           <div className={`${styles.image} ${styles.locationImageFull}`}>
             <picture>
-                <source media='(min-width: 380px)' srcSet={item.src}/>
-                <img src={item.src_m} alt={item.heading} />
+                <source 
+                  media='(min-width: 380px)'
+                  srcSet={item.src}
+                  id='js-image'  
+                />
+                <img
+                 src={item.src_m} 
+                 alt={item.heading}
+                 id='js-image' 
+                />
             </picture>
           </div>
           <div className={styles.splitImageOne}>
               <picture>
-                  <source media='(min-width: 380px)' srcSet={item.src_2}/>
-                  <img src={item.src_m2} alt={item.heading} />
+                  <source 
+                    media='(min-width: 380px)' 
+                    srcSet={item.src_2}
+                    id='js-image'
+                  />
+                  <img 
+                    src={item.src_m2} 
+                    alt={item.heading}
+                    id='js-image'
+                  />
               </picture>
             </div>
             <div className={styles.splitImageTwo}>
               <picture>
-                  <source media='(min-width: 380px)' srcSet={item.src_2}/>
-                  <img src={item.src_m2} alt={item.heading} />
+                  <source 
+                    media='(min-width: 380px)' 
+                    srcSet={item.src_2}
+                    id='js-image'
+                  />
+                  <img 
+                    src={item.src_m2} 
+                    alt={item.heading} 
+                    id='js-image'
+                  />
               </picture>
             </div>
         </section>
@@ -63,14 +100,18 @@ export default function Intro() {
           <div className={styles.textColumn}>
             <div>
               <h4>{item.heading2}</h4>
-              <p>{item.description2}</p>
+              {item.description2.map((address, addressIndex) => (
+                <p key={addressIndex}>{address}</p>
+              ))}
             </div>
             <Button text="BOOK" navigateTo='/booking/book'/>
           </div>
           <div className={styles.textColumn2}>
             <div>
               <h4>{item.heading3}</h4>
-              <p>{item.description3}</p>
+              {item.description3.map((address, addressIndex) => (
+                <p key={addressIndex}>{address}</p>
+              ))}
             </div>
             <Button text='Book' navigateTo='/booking/book'/>
           </div>
